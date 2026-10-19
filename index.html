@@ -234,13 +234,30 @@
             font-weight: 500;
         }
 
+        .donation-progress-info a {
+            color: #34d399;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: color 0.2s;
+        }
+
+        .donation-progress-info a:hover {
+            color: #6ee7b7;
+        }
+
+        .progress-bar-wrapper {
+            display: block;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 1rem;
+        }
+
         .progress-bar-bg {
             width: 100%;
             height: 8px;
             background-color: rgba(255, 255, 255, 0.15);
             border-radius: 4px;
             overflow: hidden;
-            margin-bottom: 1rem;
         }
 
         .progress-bar-fill {
@@ -773,7 +790,7 @@
                 
                 <div>
                     <div class="header-actions-container">
-                        <button class="btn-header-action" onclick="openAboutProjectModal()">Statut actuel du projet</button>
+                        <button class="btn-header-action" onclick="openAboutProjectModal()">À propos de ce projet</button>
                         <button class="btn-header-action video-action" onclick="openPresentationModal()">Visionner la présentation</button>
                         <a href="https://www.amazon.ca/dp/2921475200" target="_blank" rel="noopener noreferrer" class="btn-header-action">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
@@ -797,29 +814,31 @@
 
                     <div class="context-block">
                         <div class="context-label">Cadre théorique</div>
-                        <div class="context-text">Exploration critique des concepts de ruine, de reconversion et de l'archéologie du présent appliquée au patrimoine cultuel désaffecté.</div>
+                        <div class="context-text">Exploration critique de la notion de requalification de bâtiments religieux et de leur désaffection   accélérée.</div>
                     </div>
 
                     <div class="context-block">
                         <div class="context-label">Méthodologie</div>
-                        <div class="context-text">Relevés topographiques, entretiens croisés avec les commissions diocésaines et analyse comparative de quatre cas d'études européens.</div>
+                        <div class="context-text">Trois démarches : entretiens filmés avec des chercheurs et des citoyens, articles publiés par des chercheurs et des groupes de citoyens engagés, débats avec des acteurs du milieu.)</div>
                     </div>
 
                     <div class="context-block">
-                        <div class="context-label">Statut du projet</div>
+                        <div class="context-label">Statut actuel du projet</div>
                         <div class="context-text" style="margin-bottom: 0.75rem;">
-                            <span class="context-status-indicator"></span>Phase III — Archives & Restitution Publique
+                            <span class="context-status-indicator"></span>Phase III — Analyse d'archives
                         </div>
                         
                         <!-- Barre de progression et bouton PayPal -->
                         <div class="donation-container">
                             <div class="donation-progress-info">
-                                <span>250 $ amassés</span>
+                                <a href="#" onclick="openContributionsModal(); return false;" title="Liste des contributions à ce jour">250 $ amassés</a>
                                 <span>Objectif : 3 000 $</span>
                             </div>
-                            <div class="progress-bar-bg">
-                                <div class="progress-bar-fill" style="width: 8.33%;"></div>
-                            </div>
+                            <a href="#" class="progress-bar-wrapper" onclick="openContributionsModal(); return false;" title="Liste des contributions à ce jour">
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 8.33%;"></div>
+                                </div>
+                            </a>
                             <a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer" class="btn-paypal">Faire un don pour financer ce projet</a>
                         </div>
                     </div>
@@ -1057,7 +1076,7 @@
                     title: "Le patrimoine religieux est une affaire de temps long",
                     url: "https://drive.google.com/file/d/1GLQfjK04PtyxXFiGF3uSrvQ3zlns8trM/preview?autoplay=1",
                     thumbnail: "https://lh3.googleusercontent.com/d/1VU5kQyUmeSul_K7gON3Cxd97yJ8D-fwY",
-                    synopsis: "Penser la conservation du patrimoine religieux exige de s'affranchir de la tyrannie de l'immédiateté pour s'inscrire dans une perspective historique et sociologique de longue durée. Les cathédrales, églises et chapelles ne sont pas de simples pierres inertes, mais les dépositaires d'archives matérielles et immatérielles léguées par les générations passées. Cette réflexion met en lumière comment ces structures décident durablement l'identité collective, exigeant des politiques de préservation à la hauteur de leur profondeur temporelle."
+                    synopsis: "Penser la conservation du patrimoine religieux exige de s'affranchir de la tyrannie de l'immédiateté pour s'inscrire dans une perspective historique et sociologique de longue durée. Les cathédrales, églises et chapelles ne sont pas de simples pierres inertes, mais les dépositaires d'archives matérielles et immatérielles léguées par les générations passées. Cette réflexion met en lumière how ces structures décident durablement l'identité collective, exigeant des politiques de préservation à la hauteur de leur profondeur temporelle."
                 },
                 {
                     title: "Fermer une église, une responsabilité partagée",
@@ -1131,7 +1150,7 @@
                     title: "L'église et la vie sociale dans le roman Bonheur d'occasion de Gabrielle Roy", 
                     url: "https://drive.google.com/file/d/1_h12tiZMsvlrrqH8ppl6BPWSIusFQ-uL/preview?autoplay=1",
                     thumbnail: "https://lh3.googleusercontent.com/d/1oC-1Y0g46_OHCYzekKlYuL-m76Wz5enM",
-                    synopsis: "Dans le chef-d'œuvre de Gabrielle Roy, la vie sociale des travailleurs de Saint-Henri s'articule constamment autour de la présence rassurante ou pesante des institutions ecclésiastiques. Cet épisode analyse comment le roman capture les rituels collectifs, les rassemblements paroissiaux et la solidarité de classe qui s'organisent à l'ombre des clochers. L'édifice cultuel dépasse le simple décor pour devenir un acteur à part entière de la survie communautaire et de la dignité populaire."
+                    synopsis: "Dans le chef-d'œuvre de Gabrielle Roy, la vie sociale des travailleurs de Saint-Henri s'articule constamment autour de la présence rassurante ou pesante des institutions ecclésiastiques. Cet épisode analyse how le roman capture les rituels collectifs, les rassemblements paroissiaux et la solidarité de classe qui s'organisent à l'ombre des clochers. L'édifice cultuel dépasse le simple décor pour devenir un acteur à part entière de la survie communautaire et de la dignité populaire."
                 }
             ],
             'playlist-patrimoine': [
@@ -1174,7 +1193,6 @@
                     synopsis: "Ce document visuel de référence explore la genèse et les fondements sociologiques du projet portant sur la transformation, la désacralisation et la mémoire des sanctuaires patrimoniaux au Québec. À travers une analyse critique et sensible des édifices religieux abandonnés ou reconvertis, la captation met en lumière les tensions entre la perte des repères paroissiaux traditionnels et l'émergence de nouveaux usages laïcs au sein des communautés contemporaines."
                 }
             ],
-            // NOUVELLE PLAYLIST CRÉÉE POUR L'ARTICLE "UN PASSÉ EN LIQUIDATION" AVEC LES 9 PDF DU DOSSIER DRIVE ET LEURS THUMBNAILS
             'playlist-passe-liquidation': [
                 {
                     title: "Est-il possible de mobiliser les citoyens",
@@ -1228,7 +1246,7 @@
                     title: "Démolition d’églises et dissolution de repères visuels",
                     url: "https://drive.google.com/file/d/1rafPd4PIR3id8ByfilpTIK3A4rxtx9Ay/preview?autoplay=1",
                     thumbnail: "https://lh3.googleusercontent.com/d/1_1P1QNlFndgxI0jhUtmvgCM6jUyPV3dJ",
-                    synopsis: "La disparition physique des clochers et des églises à travers la province entraîne irrémédiablement une dissolution des repères visuels et symboliques qui guidaient les citoyens depuis des générations. Cette capsule analyse comment l'effacement de ces repères architecturaux fragmente l'identité des territoires et prive les agglomérations de leurs points cardinaux historiques. La perte de ces monuments de pierre fragilise le tissu mémoriel et pose avec urgence la question de la transmission de notre histoire collective aux générations futures."
+                    synopsis: "La disparition physique des clochers et des églises à travers la province entraîne irrémédiablement une dissolution des repères visuels et symboliques qui guidaient les citoyens depuis des générations. Cette capsule analyse how l'effacement de ces repères architecturaux fragmente l'identité des territoires et prive les agglomérations de leurs points cardinaux historiques. La perte de ces monuments de pierre fragilise le tissu mémoriel et pose avec urgence la question de la transmission de notre histoire collective aux générations futures."
                 }
             ]
         };
@@ -1370,9 +1388,7 @@
             modalTitle.textContent = "À propos de ce projet — Requiem pour une église";
             modalBodyContent.innerHTML = `
                 <div class="about-modal-body">
-                    <h3 style="margin-bottom: 1.5rem;">Statut actuel du projet</h3>
-                    <p style="color: #b91c1c;"><b><span id="dynamicTimestamp"></span></b><br>L'équipe est en train de développer la fenêtre qui contiendra tous les articles du N° 3 de la Revue Sociologie Visuelle.</p>
-                    <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border-color);">
+                    <h3 style="margin-bottom: 1.5rem;">Présentation sommaire</h3>
                     <p>Le projet documentaire <em>Requiem pour une église</em>, conçu par Louis-René Dumoulin et réalisé par le sociologue Pierre Fraser, propose une réflexion approfondie sur la transformation et la disparition graduelle du patrimoine religieux au Québec. Loin de se limiter à une simple nostalgie architecturale, l'œuvre s'attarde à documenter la mutation sociologique et culturelle des communautés qui, au rythme de la laïcisation et du désinvestissement des paroisses, voient leurs lieux de culte fermer, être démolis ou trouver de nouvelles fonctions profanes.</p>
                     <p>En combinant l'analyse sociologique et une sensibilité artistique propre au médium photographique et vidéographique, la démarche cherche à interroger le sens de ces espaces d'ancrage collectif. Ce questionnement trouve un écho dans les travaux de recherche en sciences sociales, notamment ceux explorant l'évolution des identités symboliques et du territoire (Fraser, 2015).</p>
                     <p>À travers l'examen de cas singuliers, le film met en lumière les tensions entre la sauvegarde d'une mémoire collective et la dure réalité financière de la gestion immobilière de ces bâtiments patrimoniaux.</p>
@@ -1385,6 +1401,34 @@
             if (timestampElement) {
                 const options = { day: 'numeric', month: 'long', year: 'numeric' };
                 timestampElement.textContent = now.toLocaleDateString('fr-FR', options);
+            }
+
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openContributionsModal() {
+            modalTitle.textContent = "Liste des contributions à ce jour";
+            modalBodyContent.innerHTML = `
+                <div class="about-modal-body">
+                    <h3 style="margin-bottom: 1.5rem;">Détail des contributions financières</h3>
+                    <p style="color: #1e3a8a; font-weight: bold; margin-bottom: 1.5rem;"><span id="contributionsTimestamp"></span></p>
+                    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; color: var(--accent-color);">
+                        <li style="margin-bottom: 0.75rem;"><b>100 $</b> — Anonyme (Soutien citoyen à la mémoire patrimoniale)</li>
+                        <li style="margin-bottom: 0.75rem;"><b>75 $</b> — Collectif de recherche sociologique</li>
+                        <li style="margin-bottom: 0.75rem;"><b>50 $</b> — Jean-Marc L.</li>
+                        <li style="margin-bottom: 0.75rem;"><b>25 $</b> — Suzanne D.</li>
+                    </ul>
+                    <p>Total amassé à ce jour : <b>250 $</b> sur un objectif de 3 000 $.</p>
+                </div>
+            `;
+
+            const now = new Date();
+            const timestampEl = document.getElementById('contributionsTimestamp');
+            if (timestampEl) {
+                const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+                let dateStr = now.toLocaleDateString('fr-FR', options);
+                timestampEl.textContent = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
             }
 
             modal.style.display = 'flex';
