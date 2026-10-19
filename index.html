@@ -1437,9 +1437,17 @@
 
         function openProjectStatusModal() {
             modalTitle.textContent = "Point sur le statut actuel du projet — Phase III";
+            
+            // Génération de l'horodateur automatique (date + mois + année)
+            const now = new Date();
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            const formattedTimestamp = now.toLocaleDateString('fr-FR', options);
+            const capitalizedTimestamp = formattedTimestamp.charAt(0).toUpperCase() + formattedTimestamp.slice(1);
+
             modalBodyContent.innerHTML = `
                 <div class="about-modal-body">
                     <h3 style="margin-bottom: 1.5rem;">État d'avancement : Phase III — Analyse d'archives</h3>
+                    <p style="font-size: 0.85rem; color: #718096; margin-bottom: 1rem; font-style: italic;">En date du ${capitalizedTimestamp}</p>
                     <p>La <strong>Phase III</strong> du projet « Requiem pour une église » est actuellement consacrée à l'examen approfondi des archives paroissiales, municipales et diocésaines. Cette étape méthodologique cruciale permet de croiser les données démographiques et financières avec l'histoire architecturale de chaque édifice répertorié.</p>
                     <p><strong>Principaux chantiers en cours :</strong></p>
                     <ul style="list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.15rem; color: var(--accent-color);">
