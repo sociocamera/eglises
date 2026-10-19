@@ -781,7 +781,7 @@
                     <h1>Requiem pour une église</h1>
                     <p class="header-subtitle">Mutation, désacralisation et mémoire des lieux de culte en milieu contemporain.</p>
                     <p class="header-description">
-                        Ce projet dirigé par le sociologue <a href="#" onclick="openAboutModal(); return false;" style="color: inherit; text-decoration: underline; text-underline-offset: 3px; font-weight: 500;">Pierre Fraser</a> (PhD) propose une analyse critique de la transformation accélérée des édifices religieux. À travers une approche croisant l'histoire de l'art, la sociologie urbaine et l'architecture prospective, "Requiem pour une église" interroge le vide laissé par l'abandon de la foi catholique et les nouvelles formes d'appropriation mémorielle.
+                        Ce projet qui est produit par Photo|Société et dirigé par le sociologue <a href="#" onclick="openAboutModal(); return false;" style="color: inherit; text-decoration: underline; text-underline-offset: 3px; font-weight: 500;">Pierre Fraser</a> (PhD) propose une analyse critique de la transformation accélérée des édifices religieux. À travers une approche croisant la vidéo, la recherche, l'histoire de l'art, la sociologie urbaine et l'architecture prospective, "Requiem pour une église" interroge le vide laissé par l'abandon de la foi catholique et les nouvelles formes d'appropriation mémorielle.
                     </p>
                     <p class="header-description">
                         Loin d'une simple déploration nostalgique, cette étude examine comment ces architectures monumentales se redéfinissent comme des espaces de transition, oscillant entre vestiges patrimoniaux et nouvels usages laïcs.
@@ -798,7 +798,7 @@
                         </a>
                     </div>
                     <div class="header-footer-meta">
-                        <span>Direction de Recherche en Arts & Espace | Revue Sociologie Visuelle</span>
+                        <span>Direction de Recherche en Arts & Espace de la Revue Sociologie Visuelle - Photo|Société</span>
                         <span id="dynamicEdition">Édition</span>
                     </div>
                 </div>
@@ -814,7 +814,7 @@
 
                     <div class="context-block">
                         <div class="context-label">Cadre théorique</div>
-                        <div class="context-text">Exploration critique de la notion de requalification de bâtiments religieux et de leur désaffection   accélérée.</div>
+                        <div class="context-text">Exploration critique de la notion de requalification de bâtiments religieux et de leur désaffection accélérée.</div>
                     </div>
 
                     <div class="context-block">
@@ -825,7 +825,7 @@
                     <div class="context-block">
                         <div class="context-label">Statut actuel du projet</div>
                         <div class="context-text" style="margin-bottom: 0.75rem;">
-                            <span class="context-status-indicator"></span>Phase III — Analyse d'archives
+                            <span class="context-status-indicator"></span><a href="#" onclick="openProjectStatusModal(); return false;" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;" title="Faire le point sur la Phase III">Phase III</a> — Analyse d'archives
                         </div>
                         
                         <!-- Barre de progression et bouton PayPal -->
@@ -839,7 +839,7 @@
                                     <div class="progress-bar-fill" style="width: 8.33%;"></div>
                                 </div>
                             </a>
-                            <a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer" class="btn-paypal">Faire un don pour financer ce projet</a>
+                            <a href="https://www.paypal.com/donate/?hosted_button_id=SPATMUXAZJWHU" target="_blank" rel="noopener noreferrer" class="btn-paypal">Faire un don pour financer ce projet</a>
                         </div>
                     </div>
                 </div>
@@ -1431,6 +1431,25 @@
                 timestampEl.textContent = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
             }
 
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openProjectStatusModal() {
+            modalTitle.textContent = "Point sur le statut actuel du projet — Phase III";
+            modalBodyContent.innerHTML = `
+                <div class="about-modal-body">
+                    <h3 style="margin-bottom: 1.5rem;">État d'avancement : Phase III — Analyse d'archives</h3>
+                    <p>La <strong>Phase III</strong> du projet « Requiem pour une église » est actuellement consacrée à l'examen approfondi des archives paroissiales, municipales et diocésaines. Cette étape méthodologique cruciale permet de croiser les données démographiques et financières avec l'histoire architecturale de chaque édifice répertorié.</p>
+                    <p><strong>Principaux chantiers en cours :</strong></p>
+                    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.15rem; color: var(--accent-color);">
+                        <li style="margin-bottom: 0.5rem;">Numérisation et catalogage des plans architecturaux historiques et des décrets de désacralisation.</li>
+                        <li style="margin-bottom: 0.5rem;">Transcription des entretiens sociologiques menés auprès des intervenants locaux, des membres des fabriques et des citoyens engagés.</li>
+                        <li style="margin-bottom: 0.5rem;">Évaluation croisée de la viabilité des projets de requalification civique par rapport aux pressions de la spéculation immobilière.</li>
+                    </ul>
+                    <p>Cette phase analytique sert de socle empirique aux prochaines publications de vidéos et d'articles à paraître sur ce site.</p>
+                </div>
+            `;
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
