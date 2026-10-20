@@ -724,14 +724,31 @@
             align-items: flex-start;
         }
 
-        .about-bio-photo {
+        .about-bio-photo-wrapper {
             flex: 0 0 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about-bio-photo {
             width: 200px;
             height: 250px;
             object-fit: cover;
             border-radius: 6px;
             border: 1px solid var(--border-color);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .about-bio-caption {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 0.78rem;
+            color: var(--accent-color);
+            text-align: center;
+            margin-top: 0.75rem;
+            line-height: 1.35;
+            font-style: normal;
+            font-weight: 500;
         }
 
         .about-bio-text {
@@ -772,10 +789,14 @@
                 align-items: center;
                 text-align: center;
             }
+            .about-bio-photo-wrapper {
+                width: 100%;
+                align-items: center;
+                margin-bottom: 1.5rem;
+            }
             .about-bio-photo {
                 width: 160px;
                 height: 200px;
-                margin-bottom: 1.5rem;
             }
             .about-modal-body p {
                 text-align: left;
@@ -805,10 +826,10 @@
                     <div class="header-actions-container">
                         <button class="btn-header-action" onclick="openAboutProjectModal()">À propos de ce projet</button>
                         <button class="btn-header-action video-action" onclick="openPresentationModal()">Visionner la présentation</button>
-                        <a href="https://www.amazon.ca/dp/2921475200" target="_blank" rel="noopener noreferrer" class="btn-header-action">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                            Acheter ce livre
-                        </a>
+                        <button class="btn-header-action" onclick="openTournageModal()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+                            Votre proposition de tournage ?
+                        </button>
                     </div>
                     <div class="header-footer-meta">
                         <span>Direction de Recherche en Arts & Espace de la Revue Sociologie Visuelle - Photo|Société</span>
@@ -1101,7 +1122,7 @@
                     title: "Impacts d’une fermeture d'église",
                     url: "https://drive.google.com/file/d/1AdZhwnz3OywUQMhsKwjPSWFy8906cvY2/preview?autoplay=1",
                     thumbnail: "https://lh3.googleusercontent.com/d/18N5ow1FVgseqoyxskqGXB5rn1T97pW0c",
-                    synopsis: "La disparition d'un clocher au cœur d'un village ou d'un quartier urbain engendre des ondes de choc qui dépassent largement le cadre cultuel. Cet épisode examine minutieusement les répercussions sociales, culturelles et affectives de la fermeture des églises sur le tissu communautaire. En perdant leur point d'ancrage visuel et symbolique, les milieux de vie voient s'effriter des espaces séculaires de rassemblement, de solidarité et de construction d'une mémoire collective partagée par les citoyens."
+                    synopsis: "La disparition d'un clocher au cœur d'un village ou d'un quartier urbain engendre des ondes de choc qui dépassent largement le cadre cultuel. Cet épisode examine minutieusement les répercussions sociales, culturelles et affectives de la fermeture des églises sur le tissu communautaire. En perdant leur point d'ancrage visuel et symbolique, les milieux de vie voir s'effriter des espaces séculaires de rassemblement, de solidarité et de construction d'une mémoire collective partagée par les citoyens."
                 },
                 {
                     title: "Devoir de mémoire et patrimoine religieux",
@@ -1382,7 +1403,10 @@
             modalBodyContent.innerHTML = `
                 <div class="about-modal-body">
                     <div class="about-bio-container">
-                        <img src="https://lh3.googleusercontent.com/d/1M8RUjR6K9rK-dvPF6ZwI-1intcwLz_q1" alt="Pierre Fraser" class="about-bio-photo">
+                        <div class="about-bio-photo-wrapper">
+                            <img src="https://lh3.googleusercontent.com/d/1M8RUjR6K9rK-dvPF6ZwI-1intcwLz_q1" alt="Pierre Fraser" class="about-bio-photo">
+                            <div class="about-bio-caption">Pierre Fraser (sociologue), réalisateur et directeur du projet</div>
+                        </div>
                         <div class="about-bio-text">
                             <h3>Pierre Fraser (PhD)</h3>
                             <p>Sociologue, linguiste et cinéaste indépendant né à Chicoutimi en 1955, Pierre Fraser obtient un doctorat en sociologie de l'Université Laval en 2015, couronnant un parcours marqué par l'exploration des structures symboliques du pouvoir et de la corporalité.</p>
@@ -1473,6 +1497,32 @@
         function openPresentationModal() {
             modalTitle.textContent = "Présentation — Requiem pour une église";
             modalBodyContent.innerHTML = `<iframe class="pdf-frame" src="https://drive.google.com/file/d/1trr-t9y0QLepb-NnqGGCTOF_QuXPQbII/preview?autoplay=1" allow="autoplay; fullscreen"></iframe>`;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openTournageModal() {
+            modalTitle.textContent = "Proposer un tournage, une entrevue ou un article";
+            modalBodyContent.innerHTML = `
+                <div class="about-modal-body">
+                    <div class="about-bio-container">
+                        <div class="about-bio-photo-wrapper">
+                            <img src="https://lh3.googleusercontent.com/d/1M8RUjR6K9rK-dvPF6ZwI-1intcwLz_q1" alt="Pierre Fraser" class="about-bio-photo">
+                            <div class="about-bio-caption">Pierre Fraser (sociologue), réalisateur et directeur du projet</div>
+                        </div>
+                        <div class="about-bio-text">
+                            <h3>Participez ou collaborez au projet</h3>
+                            <p>Vous souhaitez nous soumettre une proposition de tournage, planifier une entrevue ou proposer un article en lien avec le patrimoine et la transformation des églises ?</p>
+                            <p>Notre équipe accueille avec grand intérêt les initiatives citoyennes, les témoignages de terrain et les analyses documentaires inédites.</p>
+                            <p style="margin-top: 1.5rem; padding: 1.25rem; background-color: #f7fafc; border-left: 4px solid var(--primary-color); border-radius: 4px;">
+                                <strong>Pour nous joindre :</strong><br>
+                                Veuillez adresser votre proposition directement par courrier électronique à l'adresse suivante :<br>
+                                <a href="mailto:sociocamera@gmail.com" style="color: #2b6cb0; font-weight: 600; text-decoration: underline; font-size: 1.1rem; display: inline-block; margin-top: 0.5rem;">sociocamera@gmail.com</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
