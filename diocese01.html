@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'empreinte du diocèse romain au Québec - Édition Académique</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .text-content {
+            font-family: 'Merriweather', serif;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f0ea;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d6d3c9;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #bcb8ad;
+        }
+
+        /* --- STYLES NETFLIX POUR LA SECTION VIDÉOS --- */
+        .netflix-content-split {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            background-color: #000;
+            height: 520px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .netflix-main-player {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .netflix-main-player iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Style de la couverture interactive pour déclencher la vidéo */
+        .video-poster-overlay {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://lh3.googleusercontent.com/d/18D6spweOIkGqQu0j-7jjShrkteSgiSq0');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-poster-overlay::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.45);
+        }
+
+        .play-button-ring {
+            width: 72px;
+            height: 72px;
+            background-color: rgba(180, 83, 9, 0.9);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 11;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .video-poster-overlay:hover .play-button-ring {
+            transform: scale(1.08);
+            background-color: rgb(217, 119, 6);
+        }
+
+        .netflix-synopsis-pane {
+            background-color: #f7fafc;
+            color: #2d3748;
+            padding: 2rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            border-left: 1px solid #333;
+            font-family: "Georgia", "Cambria", serif;
+        }
+
+        .netflix-synopsis-tag {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #718096;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .netflix-synopsis-heading {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .netflix-synopsis-text {
+            font-size: 0.95rem;
+            color: #4a5568;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        @media (max-width: 1100px) {
+            .netflix-content-split { grid-template-columns: 1fr; height: auto; }
+            .netflix-main-player { height: 350px; }
+            .netflix-synopsis-pane { max-height: 250px; border-left: none; border-top: 1px solid #ddd; }
+        }
+    </style>
+</head>
+<body class="bg-[#fcfbf9] text-stone-800 h-full flex flex-col md:flex-row overflow-hidden">
+
+    <!-- MENU LATÉRAL GAUCHE -->
+    <aside class="w-full md:w-96 bg-[#f4f2eb] border-r border-stone-300 flex flex-col h-auto md:h-full z-10 shadow-sm">
+        <div class="p-5 border-b border-stone-300 bg-[#edeae1]">
+            <span class="text-[11px] uppercase tracking-widest text-amber-800 font-semibold block mb-0.5">Dossier sociologique</span>
+            <h1 class="text-base font-bold text-stone-900 tracking-tight">L'Architecture invisible</h1>
+            <p class="text-xs text-stone-600 mt-1">Exploration des médias</p>
+        </div>
+
+        <nav id="slide-menu" class="flex-1 overflow-y-auto p-4 space-y-3">
+            <!-- Bouton pour afficher le texte intégral -->
+            <button onclick="showTextContent()" id="btn-text" class="w-full text-left p-3 rounded-md text-sm font-medium bg-amber-700 text-white transition-colors flex items-center justify-center shadow-sm space-x-2">
+                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                <span>Analyse intégrale</span>
+            </button>
+
+            <!-- DEUX BOUTONS CÔTE À CÔTE : Source et Vidéos -->
+            <div class="grid grid-cols-2 gap-2">
+                <button onclick="showSourceContent()" id="btn-source" class="w-full text-left p-2.5 rounded-md text-xs font-medium bg-white border border-stone-300 text-stone-700 hover:border-amber-600 transition-colors flex items-center justify-center shadow-2xs space-x-1.5">
+                    <svg class="w-3.5 h-3.5 shrink-0 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                    <span>Source</span>
+                </button>
+                <button onclick="showVideosContent()" id="btn-videos" class="w-full text-left p-2.5 rounded-md text-xs font-medium bg-white border border-stone-300 text-stone-700 hover:border-amber-600 transition-colors flex items-center justify-center shadow-2xs space-x-1.5">
+                    <svg class="w-3.5 h-3.5 shrink-0 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                    <span>Vidéos</span>
+                </button>
+            </div>
+
+            <!-- LECTEUR AUDIO NATIF INTÉGRÉ DANS LA COLONNE DE GAUCHE -->
+            <div class="bg-white border border-stone-300 rounded-md p-3 shadow-2xs space-y-2">
+                <div class="flex items-center space-x-2 text-amber-800">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"></path>
+                    </svg>
+                    <span class="text-xs font-semibold uppercase tracking-wider">Exposé audio</span>
+                </div>
+                <div>
+                    <audio controls class="w-full h-9 accent-amber-700">
+                        <source src="https://raw.githubusercontent.com/sociocamera/eglises/audio/L_empreinte_du_dioc%C3%A8se_romain_au_Qu%C3%A9bec.m4a" type="audio/mp4">
+                        Votre navigateur ne supporte pas l'élément audio.
+                    </audio>
+                </div>
+            </div>
+
+            <div class="pt-2 pb-1 text-[11px] font-bold text-stone-500 uppercase tracking-wider text-center">Planches visuelles</div>
+
+            <!-- Slides affichées uniquement en miniatures sans texte -->
+            <button onclick="showSlide('https://lh3.googleusercontent.com/d/10jjwuUrM15mMcu9tuEWnXPIeU_SB6Jnf', 'Slide 1')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
+                <img src="https://lh3.googleusercontent.com/d/10jjwuUrM15mMcu9tuEWnXPIeU_SB6Jnf" alt="Slide 1" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
+            </button>
+
+            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1awXSkJPEe6bsbrQgP53rKcXhkswdERxe', 'Slide 2')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
+                <img src="https://lh3.googleusercontent.com/d/1awXSkJPEe6bsbrQgP53rKcXhkswdERxe" alt="Slide 2" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
+            </button>
+
+            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1yafec-gLA0i60aV4Gu496mrR7ciK18ke', 'Slide 3')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
+                <img src="https://lh3.googleusercontent.com/d/1yafec-gLA0i60aV4Gu496mrR7ciK18ke" alt="Slide 3" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
+            </button>
+
+            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1Nub3ZLaz94lJ6PWMQGH6HepG8hbWotJk', 'Slide 4')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
+                <img src="https://lh3.googleusercontent.com/d/1Nub3ZLaz94lJ6PWMQGH6HepG8hbWotJk" alt="Slide 4" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
+            </button>
+
+            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1DwKfZi49aqlYAsp9iEJMpJXLGBI8wcJC', 'Slide 5')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
+                <img src="https://lh3.googleusercontent.com/d/1DwKfZi49aqlYAsp9iEJMpJXLGBI8wcJC" alt="Slide 5" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
+            </button>
+
+            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1LzYwxd_13zHG9SJ-fFH3mTiEpjQRmsYK', 'Slide 6')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
+                <img src="https://lh3.googleusercontent.com/d/1LzYwxd_13zHG9SJ-fFH3mTiEpjQRmsYK" alt="Slide 6" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
+            </button>
+
+            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1L-stq2340k8FTSe3fyjs2DjKXt0EXVF0', 'Slide 7')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
+                <img src="https://lh3.googleusercontent.com/d/1L-stq2340k8FTSe3fyjs2DjKXt0EXVF0" alt="Slide 7" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
+            </button>
+
+            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1RF4Yp7xp42Rkg1EA9gsCM_QXJCqLgm_4', 'Slide 8')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
+                <img src="https://lh3.googleusercontent.com/d/1RF4Yp7xp42Rkg1EA9gsCM_QXJCqLgm_4" alt="Slide 8" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
+            </button>
+
+            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1TTuEp6B3RyY34AmK4WaCXqy13dPhO0PW', 'Slide 9')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
+                <img src="https://lh3.googleusercontent.com/d/1TTuEp6B3RyY34AmK4WaCXqy13dPhO0PW" alt="Slide 9" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
+            </button>
+
+            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1uG9XQhdH-ijhz7GOd9_YCCkjgj2DcX3K', 'Slide 10')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
+                <img src="https://lh3.googleusercontent.com/d/1uG9XQhdH-ijhz7GOd9_YCCkjgj2DcX3K" alt="Slide 10" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
+            </button>
+
+            <button onclick="showSlide('https://lh3.googleusercontent.com/d/11psz32Ww7we1STmhJ3icwXzHN7GC5Fs1', 'Slide 11')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
+                <img src="https://lh3.googleusercontent.com/d/11psz32Ww7we1STmhJ3icwXzHN7GC5Fs1" alt="Slide 11" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
+            </button>
+
+            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1MA9veqPqyCVhat9l9KLtTjY1txvH5u2I', 'Slide 12')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
+                <img src="https://lh3.googleusercontent.com/d/1MA9veqPqyCVhat9l9KLtTjY1txvH5u2I" alt="Slide 12" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
+            </button>
+
+            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1S6oaUebCzFMhVFEC8tCIeIKmcRsN08u7', 'Slide 13')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
+                <img src="https://lh3.googleusercontent.com/d/1S6oaUebCzFMhVFEC8tCIeIKmcRsN08u7" alt="Slide 13" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
+            </button>
+
+            <button onclick="showSlide('https://lh3.googleusercontent.com/d/19Wjrgl90HPD5MWo8szqwPCnCsbcqS9j0', 'Slide 14')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
+                <img src="https://lh3.googleusercontent.com/d/19Wjrgl90HPD5MWo8szqwPCnCsbcqS9j0" alt="Slide 14" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
+            </button>
+        </nav>
+    </aside>
+
+    <!-- ZONE PRINCIPALE -->
+    <main class="flex-1 flex flex-col h-full bg-[#fcfbf9] overflow-hidden">
+        
+        <!-- EN-TÊTE ÉPURÉ -->
+        <header class="bg-[#f4f2eb] border-b border-stone-300 p-4 px-6 flex items-center justify-between shadow-2xs">
+            <div>
+                <span class="text-xs font-semibold text-stone-700 block tracking-wide">Dossier multimédias</span>
+            </div>
+            <div class="text-right">
+                <span class="text-xs font-medium text-stone-600 block">Fernand Harvey</span>
+                <span class="text-[11px] text-stone-400 italic">Sociologie historique</span>
+            </div>
+        </header>
+
+        <!-- CONTAINER DYNAMIQUE (Texte intégral, Source, Vidéos ou Slide active) -->
+        <div class="flex-1 overflow-y-auto p-6 md:p-12 flex justify-center items-start">
+            <div id="dynamic-container" class="w-full max-w-4xl bg-white border border-stone-300 rounded-lg p-8 md:p-12 shadow-sm space-y-8">
+                
+                <!-- CONTENU PAR DÉFAUT : Texte intégral -->
+                <div id="view-text" class="space-y-8">
+                    <!-- En-tête de l'article -->
+                    <div class="border-b border-stone-300 pb-6">
+                        <span class="text-xs uppercase tracking-widest text-amber-800 font-bold block mb-2">Étude sociologique et historique</span>
+                        <h2 class="text-3xl font-bold text-stone-900 tracking-tight">L'empreinte du diocèse romain au Québec</h2>
+                        <p class="text-sm text-stone-500 mt-2 italic">D'après les travaux et la perspective critique du sociologue Fernand Harvey</p>
+                    </div>
+
+                    <!-- Section Introduction -->
+                    <section class="space-y-4">
+                        <h3 class="text-xl font-bold text-stone-900 border-l-4 border-amber-700 pl-3">Introduction</h3>
+                        <p class="text-content text-stone-700 text-base leading-relaxed">
+                            Saviez-vous qu'une structure administrative inventée par l'empereur romain Dioclétien il y a plus de 2 000 ans a secrètement tracé la carte de nos banques, de nos syndicats et de nos coopératives au Québec ? Derrière les clochers et les limites paroissiales se cache une véritable franchise bureaucratique qui a servi de plan d'urbanisme social et économique à la société québécoise moderne.
+                        </p>
+                        <p class="text-content text-stone-700 text-base leading-relaxed">
+                            Dans cette leçon basée sur les travaux novateurs du sociologue Fernand Harvey, nous allons découvrir comment une coquille organisationnelle de l'Antiquité est devenue la colonne vertébrale du développement du Québec.
+                        </p>
+                    </section>
+
+                    <!-- Section Points importants -->
+                    <section class="bg-[#f9f8f6] border border-stone-200 rounded-lg p-6 space-y-3">
+                        <h4 class="text-xs uppercase tracking-wider text-amber-800 font-bold">Objectifs de la démonstration</h4>
+                        <ul class="space-y-3 text-stone-700 text-sm">
+                            <li class="flex items-start space-x-2">
+                                <span class="text-amber-700 font-bold">•</span>
+                                <span><strong>Expliquer l'origine</strong> du <em>diocesis</em> romain et son adaptation par l'Église catholique jusqu'à son exportation en Nouvelle-France.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-amber-700 font-bold">•</span>
+                                <span><strong>Analyser de quelle manière</strong> les grandes institutions québécoises (Caisses populaires, syndicats, sociétés de colonisation) se sont calquées sur le réseau diocésain au XIXe siècle.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-amber-700 font-bold">•</span>
+                                <span><strong>Identifier les raisons</strong> historiques et méthodologiques qui ont rendu cette empreinte territoriale « invisible » aux yeux des chercheurs durant plusieurs décennies.</span>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <!-- Section 1 : Rome antique -->
+                    <section class="space-y-4">
+                        <h3 class="text-xl font-bold text-stone-900 border-l-4 border-amber-700 pl-3">De la Rome antique à la Nouvelle-France : L'invention d'une franchise bureaucratique</h3>
+                        <p class="text-content text-stone-700 text-base leading-relaxed">
+                            Lorsqu'on évoque l'Empire romain, on imagine immédiatement des gladiateurs, de grands aqueducs ou des légions en marche. Pourtant, l'un de ses héritages les plus puissants est d'ordre administratif : le <em>diocesis</em>.
+                        </p>
+                        <p class="text-content text-stone-700 text-base leading-relaxed">
+                            Créée à l'origine par l'empereur Dioclétien, cette circonscription était un outil purement bureaucratique destiné à gérer un empire immense. Voyant à quel point cette structure fonctionnait bien, l'Église catholique a récupéré cette coquille organisationnelle pour sa propre gouvernance. Dans ce modèle :
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+                            <div class="bg-white border border-stone-200 p-4 rounded shadow-2xs">
+                                <span class="text-xs font-bold text-amber-800 uppercase">Siège centralisé</span>
+                                <p class="text-sm text-stone-700 mt-1">Le Vatican agit comme un centre de commandement unifié.</p>
+                            </div>
+                            <div class="bg-white border border-stone-200 p-4 rounded shadow-2xs">
+                                <span class="text-xs font-bold text-amber-800 uppercase">Supervision régionale</span>
+                                <p class="text-sm text-stone-700 mt-1">Les évêques fonctionnent comme des directeurs régionaux supervisant leur territoire.</p>
+                            </div>
+                        </div>
+                        <p class="text-content text-stone-700 text-base leading-relaxed">
+                            En 1674, Monseigneur de Laval exporte ce modèle en Amérique du Nord en fondant le tout premier diocèse à Québec. Il s'agit d'un territoire gigantesque qui ne sera pas subdivisé avant 1789.
+                        </p>
+                        <p class="text-content text-stone-700 text-base leading-relaxed">
+                            L'entreprise semble totalement contre-intuitive : appliquer un système pensé pour des cités romaines hyper denses à des forêts immenses et sauvages. Et pourtant, face à un territoire aussi démesuré, cette rigidité hiérarchique était précisément ce dont la Nouvelle-France avait besoin pour maintenir un contrôle administratif et social.
+                        </p>
+                    </section>
+
+                    <!-- Section 2 : Le boom du XIXe siècle -->
+                    <section class="space-y-4">
+                        <h3 class="text-xl font-bold text-stone-900 border-l-4 border-amber-700 pl-3">Le boom du XIXe siècle et l'architecture invisible du Québec</h3>
+                        <p class="text-content text-stone-700 text-base leading-relaxed">
+                            Le véritable épreuve de force de cette « franchise » romaine survient dans la seconde moitié du XIXe siècle, au moment où le Québec connaît une forte croissance démographique. Pour encadrer cette population en expansion, la structure diocésienne révèle un pragmatisme exceptionnel : elle déborde largement le cadre strictement religieux pour devenir l'architecture invisible de la société.
+                        </p>
+                        <p class="text-content text-stone-700 text-base leading-relaxed">
+                            D'un point de vue logistique, construire un réseau complet de succursales à travers un territoire en développement coûte cher. Or, le réseau paroissial offrait une infrastructure clé en main :
+                        </p>
+                        <ul class="list-disc pl-6 space-y-2 text-stone-700 text-base">
+                            <li>Le curé était souvent la personne la plus instruite du village.</li>
+                            <li>L'Église tenait le seul registre fiable de la population.</li>
+                            <li>Il existait déjà un réseau de communication instantané basé sur un climat de confiance bien établi.</li>
+                        </ul>
+                        <p class="text-content text-stone-700 text-base leading-relaxed mt-4">
+                            C'est pourquoi une multitude d'organisations civiles, économiques et sociales ont simplement adopté la carte religieuse. Elles se sont directement calquées sur les frontières des diocèses :
+                        </p>
+                        
+                        <!-- Tableau des institutions -->
+                        <div class="overflow-x-auto my-4">
+                            <table class="w-full text-left border-collapse border border-stone-300 text-sm">
+                                <thead class="bg-[#f4f2eb] text-stone-900">
+                                    <tr>
+                                        <th class="border border-stone-300 p-3 font-semibold">Institution</th>
+                                        <th class="border border-stone-300 p-3 font-semibold">Secteur d'activité</th>
+                                        <th class="border border-stone-300 p-3 font-semibold">Ancrage territorial</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-stone-700">
+                                    <tr class="bg-white">
+                                        <td class="border border-stone-300 p-3 font-medium text-stone-900">Caisses populaires Desjardins</td>
+                                        <td class="border border-stone-300 p-3">Réseau bancaire et coopératif</td>
+                                        <td class="border border-stone-300 p-3">Paroissial et diocésain</td>
+                                    </tr>
+                                    <tr class="bg-[#fcfbf9]">
+                                        <td class="border border-stone-300 p-3 font-medium text-stone-900">Union catholique des cultivateurs (UCC)</td>
+                                        <td class="border border-stone-300 p-3">Monde agricole</td>
+                                        <td class="border border-stone-300 p-3">Réseau régional et diocésain</td>
+                                    </tr>
+                                    <tr class="bg-white">
+                                        <td class="border border-stone-300 p-3 font-medium text-stone-900">Confédération des travailleurs catholiques du Canada (CTCC)</td>
+                                        <td class="border border-stone-300 p-3">Mouvement syndical</td>
+                                        <td class="border border-stone-300 p-3">Centres urbains et diocèses</td>
+                                    </tr>
+                                    <tr class="bg-[#fcfbf9]">
+                                        <td class="border border-stone-300 p-3 font-medium text-stone-900">Sociétés de colonisation & petits séminaires</td>
+                                        <td class="border border-stone-300 p-3">Développement régional et éducation</td>
+                                        <td class="border border-stone-300 p-3">Expansion territoriale</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p class="text-content text-stone-700 text-base leading-relaxed">
+                            Comme le souligne le sociologue Fernand Harvey, le diocèse ne représentait pas seulement une ligne entre deux clochers, mais bien le squelette même de l'aménagement du territoire québécois.
+                        </p>
+                    </section>
+
+                    <!-- Section 3 : L'angle mort sociologique -->
+                    <section class="space-y-4">
+                        <h3 class="text-xl font-bold text-stone-900 border-l-4 border-amber-700 pl-3">L'angle mort sociologique : Pourquoi cet héritage a-t-il été oublié ?</h3>
+                        <p class="text-content text-stone-700 text-base leading-relaxed">
+                            Si la structure diocésienne a été le moteur de toutes nos grandes institutions, pourquoi les chercheurs l'ont-ils ignorée pendant si longtemps ? C'est le cœur de la démonstration de Fernand Harvey : cet oubli découle d'un rendez-vous manqué entre l'histoire religieuse et l'histoire régionale.
+                        </p>
+                        <p class="text-content text-stone-700 text-base leading-relaxed">
+                            Dans les années 1950 et 1960, la sociologie religieuse au Québec était fortement influencée par le sociologue français Gabriel Le Bras. L'objectif principal de ces recherches n'était pas de faire de l'histoire socio-économique, mais de faire de la pastorale : on étudiait la religion sur le terrain pour aider l'Église à se moderniser de l'intérieur, en pleine période de réformes liées au Concile Vatican II.
+                        </p>
+                        <p class="text-content text-stone-700 text-base leading-relaxed">
+                            Les chercheurs étaient tellement absorbés par la gestion du changement immédiat qu'ils n'ont pas réalisé que l'institution ecclésiale elle-même servait de plan d'urbanisme. Par la suite, lors de la Révolution tranquille, la sociologie s'est rapidement distancée de la religion pour s'affirmer scientifiquement, créant un angle mort parfait.
+                        </p>
+                        
+                        <div class="bg-amber-50 border-l-4 border-amber-800 p-5 rounded-r my-6">
+                            <p class="text-stone-800 italic font-serif text-sm">
+                                « Ignorer le rôle du diocèse pour comprendre l'économie du Québec revient à essayer de comprendre la dynamique économique d'une grande métropole en ignorant complètement l'existence de son réseau d'autoroutes. »
+                            </p>
+                            <span class="block text-right text-xs font-bold text-amber-900 mt-2">— Fernand Harvey</span>
+                        </div>
+                    </section>
+
+                    <!-- Section Synthèse / À retenir -->
+                    <section class="border-t border-stone-300 pt-6 space-y-4">
+                        <h3 class="text-lg font-bold text-stone-900">En résumé : Points clés à retenir</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div class="bg-[#f9f8f6] p-4 border border-stone-200 rounded">
+                                <strong class="text-amber-800 block mb-1">Origine romaine</strong>
+                                <p class="text-stone-600">Conçu par l'empereur Dioclétien comme circonscription administrative, le <em>diocesis</em> a été récupéré par le Vatican et implanté à Québec dès 1674 par Mgr de Laval.</p>
+                            </div>
+                            <div class="bg-[#f9f8f6] p-4 border border-stone-200 rounded">
+                                <strong class="text-amber-800 block mb-1">Infrastructure clé en main</strong>
+                                <p class="text-stone-600">Au XIXe siècle, le réseau paroissial fournissait une logistique locale unique (registres, alphabétisation, confiance) idéale pour encadrer la croissance.</p>
+                            </div>
+                            <div class="bg-[#f9f8f6] p-4 border border-stone-200 rounded">
+                                <strong class="text-amber-800 block mb-1">Modèle institutionnel</strong>
+                                <p class="text-stone-600">Des piliers majeurs comme Desjardins, l'UCC et la CTCC ont utilisé les frontières diocésiennes pour bâtir leur maillage.</p>
+                            </div>
+                            <div class="bg-[#f9f8f6] p-4 border border-stone-200 rounded">
+                                <strong class="text-amber-800 block mb-1">L'angle mort sociologique</strong>
+                                <p class="text-stone-600">Entre pastorale d'avant-garde et rupture laïque de la Révolution tranquille, cet aspect fondamental de l'aménagement a longtemps échappé aux chercheurs.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- CONTENU MASQUÉ : Source (Intégration Google Drive) -->
+                <div id="view-source" class="hidden space-y-4">
+                    <div class="border-b border-stone-200 pb-4">
+                        <span class="text-xs uppercase tracking-widest text-amber-800 font-semibold">Référence documentaire</span>
+                        <h3 class="text-2xl font-bold text-stone-900 mt-1">Source & Documents originaux</h3>
+                    </div>
+                    <div class="w-full bg-[#f9f8f6] rounded border border-stone-300 overflow-hidden" style="height: 75vh;">
+                        <iframe src="https://drive.google.com/file/d/14PhMgqIM0DM4DMJcWLQwHIfnYAkMAfkl/preview" width="100%" height="100%" style="border:none;"></iframe>
+                    </div>
+                </div>
+
+                <!-- CONTENU MASQUÉ : Vidéos (Intégration interactive style Netflix par clic de lancement) -->
+                <div id="view-videos" class="hidden space-y-4">
+                    <div class="border-b border-stone-200 pb-4">
+                        <span class="text-xs uppercase tracking-widest text-amber-800 font-semibold">Médiathèque</span>
+                        <h3 class="text-2xl font-bold text-stone-900 mt-1">Séquences Vidéo & Captations</h3>
+                    </div>
+                    
+                    <div class="netflix-content-split">
+                        <div class="netflix-main-player" id="playerWrapper">
+                            <!-- Couverture interactive qui contourne le blocage navigateur et lance la vidéo au clic -->
+                            <div class="video-poster-overlay" onclick="launchVideo()">
+                                <div class="play-button-ring">
+                                    <svg class="w-8 h-8 text-white translate-x-0.5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                                <span class="text-white text-sm font-medium mt-4 tracking-wide z-11">Lancer la lecture de la capsule</span>
+                            </div>
+                        </div>
+                        <div class="netflix-synopsis-pane">
+                            <div class="netflix-synopsis-tag">Synopsis de la capsule</div>
+                            <div class="netflix-synopsis-heading">L'empreinte du diocèse romain au Québec</div>
+                            <div class="netflix-synopsis-text">En retraçant le passage du modèle administratif romain aux structures ecclésiastiques de la Nouvelle-France, la captation illustre comment les frontières ecclésiales ont structuré en profondeur le développement économique et social du Québec moderne.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTENU MASQUÉ : Affichage dynamique des slides -->
+                <div id="view-slide" class="hidden flex flex-col items-center space-y-4">
+                    <div class="w-full flex justify-between items-center border-b border-stone-200 pb-3">
+                        <h3 id="slide-title" class="text-lg font-bold text-stone-900">Diapositive</h3>
+                        <span class="text-xs bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-1 rounded font-medium">Diaporama</span>
+                    </div>
+                    <div class="w-full bg-[#f9f8f6] rounded border border-stone-300 flex justify-center p-3">
+                        <img id="slide-img" src="" alt="Diapositive" class="max-h-[65vh] object-contain rounded shadow-xs">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- SCRIPT DE NAVIGATION INTERACTIVE -->
+    <script>
+        const btnText = document.getElementById('btn-text');
+        const btnSource = document.getElementById('btn-source');
+        const btnVideos = document.getElementById('btn-videos');
+
+        const viewText = document.getElementById('view-text');
+        const viewSource = document.getElementById('view-source');
+        const viewVideos = document.getElementById('view-videos');
+        const viewSlide = document.getElementById('view-slide');
+        const slideImg = document.getElementById('slide-img');
+        const slideTitle = document.getElementById('slide-title');
+        const slideBtns = document.querySelectorAll('.slide-btn');
+
+        function resetActiveStyles() {
+            btnText.className = "w-full text-left p-3 rounded-md text-sm font-medium text-stone-700 bg-white border border-stone-300 hover:border-amber-600 transition-colors flex items-center justify-center shadow-2xs space-x-2";
+            btnSource.className = "w-full text-left p-2.5 rounded-md text-xs font-medium bg-white border border-stone-300 text-stone-700 hover:border-amber-600 transition-colors flex items-center justify-center shadow-2xs space-x-1.5";
+            btnVideos.className = "w-full text-left p-2.5 rounded-md text-xs font-medium bg-white border border-stone-300 text-stone-700 hover:border-amber-600 transition-colors flex items-center justify-center shadow-2xs space-x-1.5";
+            
+            slideBtns.forEach(btn => {
+                btn.className = "slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group";
+            });
+        }
+
+        function showTextContent() {
+            resetActiveStyles();
+            btnText.className = "w-full text-left p-3 rounded-md text-sm font-medium bg-amber-700 text-white transition-colors flex items-center justify-center shadow-sm space-x-2";
+            
+            viewText.classList.remove('hidden');
+            viewSource.classList.add('hidden');
+            viewVideos.classList.add('hidden');
+            viewSlide.classList.add('hidden');
+        }
+
+        function showSourceContent() {
+            resetActiveStyles();
+            btnSource.className = "w-full text-left p-2.5 rounded-md text-xs font-medium bg-amber-700 text-white transition-colors flex items-center justify-center shadow-sm space-x-1.5";
+            
+            viewText.classList.add('hidden');
+            viewSource.classList.remove('hidden');
+            viewVideos.classList.add('hidden');
+            viewSlide.classList.add('hidden');
+        }
+
+        function showVideosContent() {
+            resetActiveStyles();
+            btnVideos.className = "w-full text-left p-2.5 rounded-md text-xs font-medium bg-amber-700 text-white transition-colors flex items-center justify-center shadow-sm space-x-1.5";
+            
+            viewText.classList.add('hidden');
+            viewSource.classList.add('hidden');
+            viewVideos.classList.remove('hidden');
+            viewSlide.classList.add('hidden');
+        }
+
+        function showSlide(imageUrl, title) {
+            resetActiveStyles();
+            event.currentTarget.className = "slide-btn w-full p-2 rounded-md bg-[#f4f0e6] border-2 border-amber-700 transition-all flex justify-center shadow-sm";
+
+            slideImg.src = imageUrl;
+            slideTitle.textContent = title;
+
+            viewText.classList.add('hidden');
+            viewSource.classList.add('hidden');
+            viewVideos.classList.add('hidden');
+            viewSlide.classList.remove('hidden');
+        }
+
+        // Fonction qui injecte et lance dynamiquement le lecteur Google Drive au clic utilisateur
+        function launchVideo() {
+            const wrapper = document.getElementById('playerWrapper');
+            wrapper.innerHTML = `<iframe src="https://drive.google.com/file/d/17leXggEsFqMC0838anIKrjLEL8-dF16m/preview?autoplay=1" allow="autoplay; fullscreen; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>`;
+        }
+    </script>
+</body>
+</html>
