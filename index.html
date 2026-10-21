@@ -11,7 +11,7 @@
     <meta property="og:title" content="Requiem pour une église | Mémoire et Patrimoine">
     <meta property="og:description" content="Projet documentaire et sociologique sur le devenir, la mémoire et la transformation des églises patrimoniales au Québec. Dirigé par Pierre Fraser.">
     <meta property="og:image" content="https://raw.githubusercontent.com/sociocamera/eglises/main/requiem_pour_une_eglise.jpg">
-    <meta property="og:url" content="https://sociocamera.github.io/eglises/"> <!-- URL absolue de votre page -->
+    <meta property="og:url" content="https://sociocamera.github.io/eglises/">
     <meta property="og:type" content="website">
 
     <!-- Balises Twitter Card -->
@@ -60,7 +60,6 @@
             align-items: stretch;
         }
 
-        /* Colonne de gauche (Claire) */
         .header-left {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -114,7 +113,6 @@
             line-height: 1.75;
         }
 
-        /* Style des boutons d'action de l'en-tête */
         .header-actions-container {
             display: flex;
             gap: 1rem;
@@ -168,7 +166,6 @@
             margin-top: 2rem;
         }
 
-        /* Colonne de droite (Sombre - Notes d'intention & contexte) */
         .header-right {
             background-color: #0f172a;
             color: #f8fafc;
@@ -231,7 +228,6 @@
             margin-right: 0.35rem;
         }
 
-        /* --- STYLES POUR LA PROGRESSION ET LE BOUTON DON --- */
         .donation-container {
             margin-top: 1.25rem;
             padding-top: 1rem;
@@ -454,7 +450,6 @@
             width: 100%;
         }
 
-        /* --- STYLES DU SLIDER NETFLIX AVEC VIGNETTES ET SYNOPSIS --- */
         .netflix-drawer {
             grid-column: 1 / -1; 
             background-color: #141414;
@@ -651,7 +646,6 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
-        /* --- MODALE UNIQUE POUR LES PDF ET VIDÉOS --- */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -706,7 +700,6 @@
             flex: 1;
         }
 
-        /* Styles professionnels et biographie de l'auteur avec photo intégrée */
         .about-modal-body {
             background-color: #ffffff;
             color: var(--text-color);
@@ -808,7 +801,6 @@
 
     <header>
         <div class="header-container">
-            <!-- Bloc gauche : Titre, synopsis et description -->
             <div class="header-left">
                 <div>
                     <span class="header-badge">Série documentaire sur la disparition du patrimoine religieux bâti du Québec</span>
@@ -838,7 +830,6 @@
                 </div>
             </div>
 
-            <!-- Bloc droit : Notes d'intention & Contexte (fond sombre) -->
             <div class="header-right">
                 <div>
                     <div class="context-title">
@@ -862,7 +853,6 @@
                             <span class="context-status-indicator"></span><a href="#" onclick="openProjectStatusModal(); return false;" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;" title="Faire le point sur la Phase III">Phase III</a> — Analyse d'archives
                         </div>
                         
-                        <!-- Barre de progression et bouton PayPal -->
                         <div class="donation-container">
                             <div class="donation-progress-info">
                                 <a href="#" onclick="openContributionsModal(); return false;" title="Liste des contributions à ce jour">1 250 $ amassés</a>
@@ -1006,6 +996,20 @@
                         </div>
                     </div>
                 </article>
+
+                <article class="article-card" id="article-diocese-podcasts">
+                    <div class="article-media">
+                        <img src="https://lh3.googleusercontent.com/d/10YnA_65T-gd3TtkYguaL-1LiulZ0nPJl?auto=format&fit=crop&w=600&q=80" alt="Analyses diocésaines et podcasts">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-doi">Recherche et Audiovisuel</div>
+                        <h3 class="article-title">Diocèse et dynamiques territoriales</h3>
+                        <p class="article-summary">Exploration approfondie des structures diocésaines, des archives ecclésiastiques et des capsules audiovisuelles documentant l'évolution de l'emprise territoriale des paroisses au Québec.</p>
+                        <div class="article-actions">
+                            <button class="btn-modal" onclick="openRemoteHtmlModal('Diocèse et dynamiques territoriales', 'https://sociocamera.github.io/eglises/diocese01.html')">Analyses</button>
+                        </div>
+                    </div>
+                </article>
             </div>
         </section>
     </main>
@@ -1014,7 +1018,7 @@
         <p>&copy; 2026 REQUIEM POUR UNE ÉGLISE — Tous droits réservés. Projet de recherche documentaire et sociologique.</p>
     </footer>
 
-    <!-- Fenêtre modale unique pour afficher les PDF ou une vidéo isolée -->
+    <!-- Fenêtre modale unique -->
     <div id="mediaModal" class="modal-overlay" onclick="closeModalOnOutside(event)">
         <div class="modal-container">
             <div class="modal-header">
@@ -1029,7 +1033,6 @@
         const GOOGLE_SCRIPT_URL = "";
 
         window.addEventListener('DOMContentLoaded', function() {
-            // Horodatage dynamique du mois et de l'année courante pour l'édition
             const now = new Date();
             const options = { month: 'long', year: 'numeric' };
             const formattedDate = now.toLocaleDateString('fr-FR', options);
@@ -1041,254 +1044,25 @@
             }
         });
 
-        // --- BASES DE DONNÉES DES PLAYLISTS VIDÉOS AVEC VIGNETTES ET SYNOPSIS ---
         const videoPlaylists = {
             'playlist-evolution': [
                 { 
                     title: "L'évolution du catholicisme au Québec de 1960 à 2001", 
                     url: "https://drive.google.com/file/d/194OPaamSnusiYfap2ayshA1MpIF-0tfD/preview?autoplay=1",
                     thumbnail: "https://lh3.googleusercontent.com/d/1hln9xKirdJGuTInVpU2KT07u2qe3ZwYN?auto=format&fit=crop&w=600&q=80",
-                    synopsis: "Amorcé par la Révolution tranquille, le déclin de l'emprise institutionnelle de l'Église catholique marque un basculement sociétal majeur. Le sociologue Martin Meunier analyse la transition d'une adhésion culturelle massive vers un effritement des pratiques régulières. Loin de s'effondrer instantanément, le catholicisme se fragmente, perdant son rôle de ciment national unificateur pour devenir une empreinte mémorielle discrète. Cette évolution redéfinit en profondeur les liens entre le croire, l'appartenance collective et les institutions séculières."
-                },
-                { 
-                    title: "La monté du pluralisme religieux au Québec", 
-                    url: "https://drive.google.com/file/d/1y4O-tVJ-zWJBfSwjo6x3962YFFjmcEJe/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1SDpa6wJFoK0DiXUnVkNg9LbY6m1xV3Fi?auto=format&fit=crop&w=600&q=80",
-                    synopsis: "La décennie 2010 marque un tournant caractérisé par une accélération abrupte de la désaffection religieuse et une rupture générationnelle prononcée. Ce chapitre met en lumière le choc structurel qu'subit le catholicisme face à la baisse des ordinations, au vieillissement des pratiquants et à la fermeture en cascade des lieux de culte. La transmission intergénérationnelle s'étiole, érodant les derniers bastions de la sociabilité paroissiale et confrontant les communautés à l'avenir de leur patrimoine."
-                },
-                { 
-                    title: "Choc brutal pour le catholicisme à partir de 2011", 
-                    url: "https://drive.google.com/file/d/1gRT6Sh3og6zOGaoyz48Wh9DVrw3m47qW/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/19FSExjGVM3tv2tPT-oxPj1qrajkvcVyO?auto=format&fit=crop&w=600&q=80",
-                    synopsis: "La décennie 2010 marque un tournant caractérisé par une accélération abrupte de la désaffection religieuse et une rupture générationnelle prononcée. Ce chapitre met en lumière le choc structurel qu'subit le catholicisme face à la baisse des ordinations, au vieillissement des pratiquants et à la fermeture en cascade des lieux de culte. La transmission intergénérationnelle s'étiole, érodant les derniers bastions de la sociabilité paroissiale et confrontant les communautés à l'avenir de leur patrimoine."
-                },
-                { 
-                    title: "La fin du catholicisme institutionnel", 
-                    url: "https://drive.google.com/file/d/1h2Pz5chPCWRpBDXw5yFTpwDQi3ewtw_K/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1FXniOjGo83sfJfPl8Cfesh2srIhmBm7r?auto=format&fit=crop&w=600&q=80",
-                    synopsis: "Ce volet synthétise la métamorphose historique du champ religieux québécois, passé d'une position majoritaire omniprésente à une présence minoritaire. L'analyse met en relief les défis de cette minorisation et la liquidation matérielle des biens religieux. En définitive, cette mutation transforme le fait catholique d'une obligation institutionnelle collective en une démarche spirituelle individuelle et optionnelle, redéfinissant radicalement la place de la religion dans l'espace public moderne." 
-                },
-                { 
-                    title: "Déclin de l'Église catholique", 
-                    url: "https://drive.google.com/file/d/18QAcmE5CYS9KOaF-EZ-0Nb-rQ2g_Atk4/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1MIRt_DSMhTYPcV-TjxxohQvWsbLgnOpD?auto=format&fit=crop&w=600&q=80",
-                    synopsis: "Cette capsule propose une synthèse rigoureuse des dynamiques structurelles qui marquent la désertion progressive des sanctuaires au Québec. Elle analyse l'impact direct de la baisse des vocations religieuses et du vieillissement des communautés, entraînant inexorablement la fermeture en cascade des lieux de culte. À travers un regard sociologique, ce volet met en lumière les défis inédits posés par la gestion de ce vide institutionnel et la perte des repères territoriaux traditionnels."
-                },
-                { 
-                    title: "L'Église triomphante", 
-                    url: "https://drive.google.com/file/d/1dW6qoTIp5fzfWbX8jJMyrt8nl0HdlC64/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1pL_jzuFw_fvSOwf5-AlXrQAIQYa003OF?auto=format&fit=crop&w=600&q=80",
-                    synopsis: "Ce segment explore en profondeur la période historique d'hégémonie et de centralité absolue de l'Église catholique au Québec. Il met en scène l'âge d'or du tissu paroissial et communautaire, où le clocher incarnait le cœur battant de la vie collective, morale et politique. En retraçant l'omniprésence institutionnelle de cette époque, la vidéo interroge la force du ciment identitaire national forgé par la foi avant les grands bouleversements de la modernité contemporaine."
-                },
-                { 
-                    title: "Rejet de l'Église catholique au Québec", 
-                    url: "https://drive.google.com/file/d/1QCTKfCN-_a1i8NgAGQE-MMhDF5cplbTI/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1kqrbt0TnJdYkz5h2Bm-TOApalSZSZ0Dq?auto=format&fit=crop&w=600&q=80",
-                    synopsis: "Cette analyse critique se penche sur les ruptures idéologiques profondes et la contestation populaire qui ont accompagné le détachement de la société québécoise envers l'institution religieuse. La Révolution tranquille et les décennies subséquentes ont agi comme des catalyseurs de libération intellectuelle, tout en engendrant un rejet parfois radical de l'emprise passée. La vidéo dissèque les tensions mémorielles et les règlements de compte collectifs qui marquent encore notre rapport actuel au patrimoine spirituel."
-                },
-                { 
-                    title: "Époque noire de l'Église catholique au Québec", 
-                    url: "https://drive.google.com/file/d/1IUU0ZcUZ1kKIP5fvnB4URBCsDwO_nyAg/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1khMr-6JuOIniJqvIGHxyt2fbVOZibfG2?auto=format&fit=crop&w=600&q=80",
-                    synopsis: "Ce chapitre aborde sans concession les zones d'ombre, les scandales institutionnels et les crises morales qui ont secoué l'Église catholique québécoise. En revisitant cette période sombre de l'histoire ecclésiale, la capsule met en lumière la fin d'un modèle d'autorité dogmatique et le bris de la confiance citoyenne. Cette rupture définitive a lourdement pesé sur la disqualification morale de l'institution, précipitant la transformation radicale et souvent douloureuse du paysage spirituel et culturel moderne."
+                    synopsis: "Amorcé par la Révolution tranquille, le déclin de l'emprise institutionnelle de l'Église catholique marque un basculement sociétal majeur."
                 }
             ],
-            'playlist-eglises-sursis': [
-                {
-                    title: "Avant que tout ne s'efface",
-                    url: "https://drive.google.com/file/d/1trr-t9y0QLepb-NnqGGCTOF_QuXPQbII/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1Pvk1ryta48FPh0xMkOLpyn65G-pNSsqZ",
-                    synopsis: "Au Québec, le patrimoine religieux bâti subit une érosion rapide et silencieuse qui bouleverse en profondeur nos paysages et nos repères collectifs. Face à la multiplication des églises vendues, abandonnées, démolies ou requalifiées en espaces civils, la préservation de ces sanctuaires devient une urgence absolue. Cette capsule explore la nécessité impérieuse de consigner la mémoire de ces lieux habités d'histoire avant qu'ils ne disparaissent définitivement de notre conscience commune."
-                },
-                {
-                    title: "Une urgence qu'on ne lit pas face au patrimoine religieux du Québec",
-                    url: "https://drive.google.com/file/d/1wpCw6zGMUJiXkk5_R7yAtMKFHcIm1UCR/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1dxVWZbedNyD-3A7YAm67kP0EgFlzg1e-",
-                    synopsis: "Malgré l'état de délabrement avancé de nombreux édifices sacrés à travers la province, les autorités publiques tardent à impulser des actions concrètes et d'envergure. Cette lenteur bureaucratique contraste cruellement avec la vitesse de détérioration du bâti patrimonial. Le reportage dresse un constat sévère sur l'inertie décisionnelle face à cette crise culturelle, tout en soulignant le manque de lecture politique et sociale de l'urgence de protéger ces témoins architecturaux irremplaçables."
-                },
-                {
-                    title: "Le patrimoine religieux est une affaire de temps long",
-                    url: "https://drive.google.com/file/d/1GLQfjK04PtyxXFiGF3uSrvQ3zlns8trM/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1VU5kQyUmeSul_K7gON3Cxd97yJ8D-fwY",
-                    synopsis: "Penser la conservation du patrimoine religieux exige de s'affranchir de la tyrannie de l'immédiateté pour s'inscrire dans une perspective historique et sociologique de longue durée. Les cathédrales, églises et chapelles ne sont pas de simples pierres inertes, mais les dépositaires d'archives matérielles et immatérielles léguées par les générations passées. Cette réflexion met en lumière how ces structures décident durablement l'identité collective, exigeant des politiques de préservation à la hauteur de leur profondeur temporelle."
-                },
-                {
-                    title: "Fermer une église, une responsabilité partagée",
-                    url: "https://drive.google.com/file/d/1Hv4Phzltkuqe5H_kQyp2M7EoPBXyLVmU/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/158lNKppnHrq1X0MKgd-pm5puYB7DGXQV",
-                    synopsis: "La décision de fermer un lieu de culte n'est jamais purement administrative ; elle plonge les conseils de fabrique et les paroissiens au cœur de dilemmes déchirants, oscillant entre deuil communautaire et impératifs financiers. Cette capsule analyse la complexité de cette responsabilité partagée où s'entremêlent attachement cultuel, charges d'entretien insoutenables et négociations ardues. Elle met en scène la solitude des acteurs locaux face au démantèlement progressif du réseau paroissial traditionnel québécois."
-                },
-                {
-                    title: "Impacts d’une fermeture d'église",
-                    url: "https://drive.google.com/file/d/1AdZhwnz3OywUQMhsKwjPSWFy8906cvY2/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/18N5ow1FVgseqoyxskqGXB5rn1T97pW0c",
-                    synopsis: "La disparition d'un clocher au cœur d'un village ou d'un quartier urbain engendre des ondes de choc qui dépassent largement le cadre cultuel. Cet épisode examine minutieusement les répercussions sociales, culturelles et affectives de la fermeture des églises sur le tissu communautaire. En perdant leur point d'ancrage visuel et symbolique, les milieux de vie voir s'effriter des espaces séculaires de rassemblement, de solidarité et de construction d'une mémoire collective partagée par les citoyens."
-                },
-                {
-                    title: "Devoir de mémoire et patrimoine religieux",
-                    url: "https://drive.google.com/file/d/1o95PxT-OI4grwEowUytSqu_vUEKT54kv/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1wSNoNYHjBEzxNA60Urrsc0f-aqVlsDJQ",
-                    synopsis: "Face à la sécularisation rapide de la société et à la transformation des usages du territoire, l'obligation morale de transmettre l'histoire de notre architecture religieuse s'impose avec acuité. Ce segment propose une analyse sociologique rigoureuse sur la nécessité vitale de sauvegarder les mémoires, les récits et les objets qui racontent l'évolution spirituelle et communautaire du Québec. Le devoir de mémoire devient alors un acte de résistance culturelle pour comprendre d'où nous venons."
-                },
-                {
-                    title: "Comment préserver le patrimoine religieux bâti du Québec ?",
-                    url: "https://drive.google.com/file/d/1wpvIJwmlW43C7CHCzzcWn_DxvgAkn1sv/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/19BrpkULMvi0cShpLFUKus5L6WTSOCY5M",
-                    synopsis: "Cette capsule propose une analyse approfondie des défis complexes qui entourent la sauvegarde du patrimoine religieux bâti au Québec. Face à une vague d'abandon et à la disparition progressive de nombreux édifices emblématiques, il devient impératif d'examiner les facteurs socio-économiques et culturels en jeu. L'étude met en lumière la nécessité d'une prise de conscience collective et de stratégies novatrices pour assurer la pérennité architecturale de ces témoins précieux de notre histoire communautaire."
-                },
-                {
-                    title: "S'entendre pour préserver le patrimoine religieux",
-                    url: "https://drive.google.com/file/d/1Q5MYthcIq6OsyfBhuZQNQrsoolHce7xK/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1NgJ1MCiKnDWfMLt5F8sAxBsMk4W5t51P",
-                    synopsis: "On aborde ici l'importance cruciale et incontournable de la concertation multipartite entre les municipalités, les fabriques locales et les citoyens. Pour statuer efficacement sur l'avenir à long terme de ces édifices, le dialogue ouvert et structuré demeure la meilleure clé de voûte. En unissant leurs forces, les acteurs locaux parviennent à concilier les réalités financières et la valeur patrimoniale, évitant ainsi des décisions unilatérales préjudiciables au tissu social et culturel."
-                },
-                {
-                    title: "La stratégie de l'abandon par les promoteurs immobiliers",
-                    url: "https://drive.google.com/file/d/1tbBrGAhICQHwEAYeOiF6WaW5hJ_zSEC7/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1E9RmP15SoAXF6f3wk82kHhnO1h_Gn6s1",
-                    synopsis: "L'analyse se penche ici sur l'impact souvent destructeur des promoteurs immobiliers et leurs tactiques d'acquisition, de transformation ou de pure spéculation autour des anciens édifices religieux. En laissant volontairement dépérir le bâti pour justifier de futures démolitions, certaines logiques mercantiles menacent directement l'intégrité de notre mémoire collective. Cette démonstration expose au grand jour les dérives de la financiarisation du territoire et les failles réglementaires qui permettent de telles pratiques préjudiciables."
-                },
-                {
-                    title: "Une requalification d'église réussie",
-                    url: "https://drive.google.com/file/d/1EQoBsOZTFx7554sYkeNknhqLzw9I6rVt/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/12ogMyjeFQi99WPOqk3VfWioL-QWMS9Ox",
-                    synopsis: "Avec le cas détaillé de l'église Saint-Gabriel du comté de Bellechasse, cette vidéo met en valeur des exemples concrets et inspirants de reconversions réussites d'anciens lieux de culte en espaces civiques, culturels ou communautaires dynamiques. Ces initiatives démontrent qu'avec de l'audace, une planification rigoureuse et un engagement citoyen fort, il est tout à fait possible d'insuffler une nouvelle vie à ces structures. La transformation réussie témoigne de leur formidable potentiel d'adaptation au service direct des besoins contemporains de la collectivité."
-                }
-            ],
-            'playlist-social': [
-                { 
-                    title: "Rôle central de la paroisse dans la vie des gens", 
-                    url: "https://drive.google.com/file/d/1yvwr-K9rvqKKubCSC0MhIFzZjqDbI-Qf/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1Bcnc2A1180hysOqWby43PdGFsxW_ON4Y",
-                    synopsis: "La paroisse structurait intimement le quotidien des citoyens en encadrant les naissances, les mariages et les deuils tout en régulant la sociabilité de voisinage. Cette capsule explore la dimension anthropologique de cette organisation territoriale qui tissait un réseau d'entraide intergénérationnelle d'une remarquable robustesse. En perdant cet ancrage institutionnel central, les communautés subissent une mutation profonde de leurs repères identitaires et relationnels, redéfinissant entièrement les modalités de la solidarité et de l'engagement civique d'aujourd'hui."
-                },
-                { 
-                    title: "Rôle de la religion catholique dans l'économie", 
-                    url: "https://drive.google.com/file/d/17leXggEsFqMC0838anIKrjLEL8-dF16m/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/18D6spweOIkGqQu0j-7jjShrkteSgiSq0",
-                    synopsis: "L'institution ecclésiale a longtemps exercé une influence structurante sur l'économie locale, gérant des œuvres de bienfaisance, des institutions d'enseignement et des investissements immobiliers d'envergure. Cet exposé examine l'imbrication étroite entre la ferveur religieuse et les dynamiques matérielles qui ont façonné le développement des régions québécoises. La sécularisation moderne a entraîné le désengagement financier de l'Église, plongeant les municipalités et les citoyens face à des responsabilités économiques inédites pour maintenir ou reconvertir le patrimoine."
-                },
-                { 
-                    title: "Rôle des églises dans le roman de Gabrielle Roy - Bonheur d'occasion", 
-                    url: "https://drive.google.com/file/d/18x9BQgXKC5ScXjX5eVy_3YwW6d4YCduY/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1dqrpe-hi7Ykn4OuzRKC-przeXYy_C1mi",
-                    synopsis: "Sous la plume de Gabrielle Roy, le quartier Saint-Henri trouve dans ses églises des repères architecturaux et symboliques incontournables qui soutiennent les habitants au milieu de la misère ouvrière. Les édifices religieux s'y révèlent comme des espaces de refuge et d'espérance face aux rigueurs de la condition urbaine. Cette analyse littéraire et sociologique met en lumière la fonction cathartique et consolatrice des sanctuaires au cœur des drames humains de la modernité industrielle montréalaise."
-                },
-                { 
-                    title: "Relation avec l'église dans le roman Bonheur d'occasion de Gabrielle Roy", 
-                    url: "https://drive.google.com/file/d/138LY3WVLilYdI815qgGGI4F7Pdftwd8A/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1FuoolgKu4lXTPf8ln2pqWcsaxTdu7oLl",
-                    synopsis: "L'œuvre magistrale de Gabrielle Roy dépeint avec finesse la complexité des liens unissant les personnages à l'institution religieuse, oscillant entre soumission pieuse, réconfort spirituel et quête d'émancipation. L'église y apparaît à la fois comme un ciment protecteur et une instance de contrainte morale face aux aspirations individuelles. En revisitant ces trajectoires romanesques, la capsule questionne la manière dont la littérature a su consigner les mutations psychologiques et sociales d'une époque en pleine transition."
-                },
-                { 
-                    title: "L'église et la vie sociale dans le roman Bonheur d'occasion de Gabrielle Roy", 
-                    url: "https://drive.google.com/file/d/1_h12tiZMsvlrrqH8ppl6BPWSIusFQ-uL/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1oC-1Y0g46_OHCYzekKlYuL-m76Wz5enM",
-                    synopsis: "Dans le chef-d'œuvre de Gabrielle Roy, la vie sociale des travailleurs de Saint-Henri s'articule constamment autour de la présence rassurante ou pesante des institutions ecclésiastiques. Cet épisode analyse how le roman capture les rituels collectifs, les rassemblements paroissiaux et la solidarité de classe qui s'organisent à l'ombre des clochers. L'édifice cultuel dépasse le simple décor pour devenir un acteur à part entière de la survie communautaire et de la dignité populaire."
-                }
-            ],
-            'playlist-patrimoine': [
-                {
-                    title: "Bâtisseurs d'églises",
-                    url: "https://drive.google.com/file/d/1OAostYBMsuQlohb1vkdtnjwNiA2ZE8ob/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/15ponkzwjsezYH0yaJ8bZgOGqwCMEbE7d",
-                    synopsis: "L'érection des sanctuaires paroissiaux fut le fruit d'un effort collectif titanesque, unissant la piété populaire, le savoir-faire des maîtres artisans et la volonté des communautés rurales. Ces bâtisseurs d'églises ont façonné l'ossature même du territoire québécois, érigeant au cœur de chaque village un phare spirituel et identitaire incontesté. En revisitant leur labeur, nous mesurons l'ampleur de la rupture actuelle, alors que ces monuments de pierre et de foi subissent l'implacable loi de l'abandon et de la spéculation immobilière."
-                },
-                {
-                    title: "Architecture qui transcende",
-                    url: "https://drive.google.com/file/d/1cA65_vPZ6yF5jTU4e5p2P7zb2O-bd3hD/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1MGUL0I3cjE8lSlfYhnZcqpyUhvWczfO2",
-                    synopsis: "L'architecture religieuse ne se limite pas seulement à la simple ordonnance de la pierre et du bois ; elle incarne cette aspiration métaphysique par laquelle les sociétés d'autrefois cherchaient à toucher l'absolu. En dressant des élans verticaux vers les cieux, ces sanctuaires sacrés structuraient l'espace habité tout en imprimant dans la conscience collective un horizon de transcendance. Aujourd'hui, face à la sécularisation galopante, c'est toute cette charge symbolique monumentale qui vacille et cherche de nouveaux repères."
-                },
-                {
-                    title: "Architecture à la Dom Bello",
-                    url: "https://drive.google.com/file/d/1t55GURFxUlA6VG_bgimoKnkuqzPvFfBE/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/13Rbo56arUKK7310qdS8k9mfyVblU-owx",
-                    synopsis: "L'empreinte artistique de Dom Bello à travers l'aménagement liturgique témoigne d'une volonté audacieuse de renouveler le langage plastique du sacré au Québec. En épousant les formes modernistes tout en respectant l'ordonnance spirituelle des lieux, cette approche architecturale a cherché à concilier l'exigence esthétique et la ferveur communautaire. C'est l'histoire d'un dialogue subtil entre modernité artistique et tradition ecclésiale, dont les vestiges sculptés continuent de hanter les espaces transformés de notre patrimoine bâti contemporain."
-                },
-                {
-                    title: "Grandes orgues du Québec",
-                    url: "https://drive.google.com/file/d/1suz8yHP2F3_i_chEb57LXwHStzwhjesh/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1-jQ_Eka4hvWov7kSVZ3yUIhZy9T240yh",
-                    synopsis: "Les grandes orgues constituaient la voix triomphante du divin, emplissant la nef de vibrations majestueuses qui unissaient les fidèles dans une même communion esthétique et spirituelle. Ces instruments monumentaux, véritables chefs-d'œuvre de la facture instrumentale, sombrent aujourd'hui dans le silence à mesure que s'éteignent les paroisses. Leur dispersion ou leur abandon silencieux illustre de manière poignante la désarticulation d'un univers sonore et symbolique qui structurait jadis la sensibilité collective de toute une nation sécularisée."
-                },
-                {
-                    title: "Église comme projet architectural dans le roman Bonheur d'occasion de Gabrielle Roy",
-                    url: "https://drive.google.com/file/d/1ZRctN_blUVSPMh30EqN1irVrltiMr_4q/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1ry76WaojqSrlxqdbYMR1ayidJmIZ5ZAS",
-                    synopsis: "Sous la plume de Gabrielle Roy, le paysage urbain de Saint-Henri trouve dans ses églises des points d'ancrage indélébiles qui rythment la condition ouvrière et les quêtes de salut. L'église s'y révèle non seulement comme un décor de pierre, mais comme un espace total où se nouent les drames intimes, la misère sociale et les aspirations eschatologiques des citadins. Cet examen littéraire éclaire la manière dont le roman québécois a su capter la centralité morale du clocher."
-                }
-            ],
-            'playlist-projet': [
-                {
-                    title: "Requiem pour une église",
-                    url: "https://drive.google.com/file/d/1VFgbfhJ_v3uoYlBCHzzN7LbCNVAVgWtE/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/10YnA_65T-gd3TtkYguaL-1LiulZ0nPJl",
-                    synopsis: "Ce document visuel de référence explore la genèse et les fondements sociologiques du projet portant sur la transformation, la désacralisation et la mémoire des sanctuaires patrimoniaux au Québec. À travers une analyse critique et sensible des édifices religieux abandonnés ou reconvertis, la captation met en lumière les tensions entre la perte des repères paroissiaux traditionnel et l'émergence de nouveaux usages laïcs au sein des communautés contemporaines."
-                }
-            ],
-            'playlist-passe-liquidation': [
-                {
-                    title: "Est-il possible de mobiliser les citoyens",
-                    url: "https://drive.google.com/file/d/1u1ebhaFm17387jlNBve3UUWohqxhdO_0/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1gCFyBpPnFIJnUZOxXsxUwIczx7jDtzvy",
-                    synopsis: "Quiconque a déjà parcouru en voiture ou à vélo les campagnes québécoises sait fort bien que pour s’orienter à l’approche d’un village inconnu et trouver son centre, nul besoin de Google Maps ou de satellites : il suffit de lever les yeux au ciel pour repérer le clocher de l’église. Autour de l’église s’agglutinaient traditionnellement les maisons des notables, formant ainsi le véritable cœur de la communauté. Aujourd’hui, ces monuments érigés par les travailleurs à la sueur de leur front sont devenus lourds à porter pour les Fabriques en raison de coûts d'entretien exorbitants et d’une baisse marquée de la pratique religieuse, posant un défi national majeur de sauvegarde patrimoniale."
-                },
-                {
-                    title: "Requiem pour l’église Saint-Cœur-de-Marie",
-                    url: "https://drive.google.com/file/d/1rafPd4PIR3id8ByfilpTIK3A4rxtx9Ay/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1zCTqgC0eLHr1YAsKrgMDI-aEQ0_e_LrS",
-                    synopsis: "Depuis que l’église Saint-Cœur-de-Marie, située sur les hauteurs de la Grande Allée à Québec, a été démolie sauvagement à la fin de l’été 2019, la question de l'échec de sa sauvegarde demeure entière. Comment un édifice aussi précieux a-t-il pu disparaître dans une indifférence quasiment généralisée et sans pénalité pour les responsables ? À travers une égo-histoire nourrie de souvenirs universitaires et de recherches historiques, cet examen retrace la trajectoire de ce temple construit en 1918 et s’interroge sur les failles de notre capacité collective à protéger notre patrimoine architectural d'exception."
-                },
-                {
-                    title: "Des projets, que des projets",
-                    url: "https://drive.google.com/file/d/1PR3CuRWp8sWsOIBFqIvhdKDU-w-oFL0-/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1xvkPt7kPBSbHotiWgJyS11X9GineUZv2",
-                    synopsis: "L'église Saint-Jean-Baptiste de Québec, chef-d'œuvre de l'architecte Joseph-Ferdinand Peachy, occupe une place dominante dans le paysage urbain et la vie communautaire du quartier. Malgré son classement comme bâtiment historique en 1991 et les multiples projets de relance développés par le groupe Espace Solidaire depuis 2008 — visant à transformer le lieu en un espace de reconnaissance de l'engagement citoyen et en musée des traditions vivantes —, sa survie est demeurée précaire, culminant avec sa fermeture abrupte le 24 mai 2015 et laissant derrière elle un grand vide institutionnel et social."
-                },
-                {
-                    title: "Destins d’églises, analyses visuelles",
-                    url: "https://drive.google.com/file/d/1KAH6Rxdcs-u17UPHfKJ6A4ATq-mHhxvz/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1VqSKTklrfvvLjg7-ClMe85EKOiqlVbg6",
-                    synopsis: "En privilégiant la sociologie par l’image plutôt que la simple sociologie filmique constituée de 'têtes parlantes', cette approche utilise la photographie et la vidéo comme de véritables outils d'observation participante et de démonstration scientifique. L'image traite ainsi le fait social comme un modèle d'expression et de mise en valeur des significations symboliques. Dans le cadre de la Revue Sociologie Visuelle, cette démarche cherche à documenter de manière rigoureuse la transformation, la désacralisation et la mémoire des sanctuaires patrimoniaux à travers le Québec contemporain."
-                },
-                {
-                    title: "Ce qui est réalisable et ce qui ne l’est pas",
-                    url: "https://drive.google.com/file/d/14MLYEbYGGPMgDplPJTVJgwwlMnRTF7ld/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1sFL6s0HtvgSAfSzEE0LpUdjrxXoNpjU5",
-                    synopsis: "Les motivations pour sauvegarder le patrimoine religieux reposent soit sur l'appartenance à une communauté tissée serrée, soit sur une sensibilisation culturelle au patrimoine bâti. L'implication citoyenne, bien que riche, se heurte aux limites du bénévolat face aux lois, au financement et aux leviers institutionnels, rappelant le jeu de serpents et d'échelles. Malgré les imprévus et les crises, le défi constant des citoyens mobilisés consiste à conserver leur équipe intacte pour continuer de talonner les instances politiques et assurer la pérennité de leurs quartiers."
-                },
-                {
-                    title: "Les églises dans le roman Bonheur d’occasion",
-                    url: "https://drive.google.com/file/d/1UCvKBXWQZPlriqyxU3x_ccB0HK8jubzd/preview",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1BcZkeRsPSlOH45Z8JtR7RZmA_L4Bb1-H",
-                    synopsis: "Sous la plume de Gabrielle Roy dans 'Bonheur d’occasion', le quartier montréalais de Saint-Henri trouve dans ses églises des points d'ancrage indélébiles qui soutiennent les habitants au milieu de la misère ouvrière. Les édifices religieux s'y révèlent non seulement comme des décors de pierre, mais comme des espaces de refuge et d'espérance face aux rigueurs de la condition urbaine. Cet examen littéraire et sociologique met en lumière la fonction cathartique et consolatrice des sanctuaires au cœur des drames humains de la modernité."
-                },
-                {
-                    title: "Requalifier une église en la réintégrant dans son milieu",
-                    url: "https://drive.google.com/file/d/1sRCtvgA6UNdQm18EzZjBJSPg3AQRaJSx/preview",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1DS5UHinLMrOltSIDPC_KPbc-1PNW2KNp",
-                    synopsis: "La requalification réussie des anciens lieux de culte représente une alternative incontournable à la démolition ou à l'abandon spéculatif. En transformant ces structures monumentales en espaces civiques, culturels ou communautaires dynamiques — à l'instar d'initiatives inspirantes menées en région —, il est possible de leur insuffler une nouvelle vie au service direct des besoins contemporains de la collectivité. Cette démarche démontre qu'avec de l'audace et un engagement citoyen fort, le patrimoine bâti peut continuer d'habiter le présent."
-                },
-                {
-                    title: "Mobilisation par le court-métrage",
-                    url: "https://drive.google.com/file/d/1-El4nw4hd-emyXSdnWh8_5LiClEJAZlt/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1LDR-1jvQtEIpGh2XwwFvL0VScKTDvXie",
-                    synopsis: "Le Québec contemporain semble parfois oblitérer son patrimoine religieux bâti sous les coups des démolisseurs, mais la réalité s'avère beaucoup plus complexe. À partir de documentaires comme 'Requiem pour une église' et 'Au-delà du sacré', l'analyse met en lumière la perte de repères des communautés privées de ces espaces qui structuraient toute la vie de leur quartier. La fermeture de l'église Saint-Jean-Baptiste a notamment évacué une banque alimentaire, un groupe d'achats et de multiples services de proximité, illustrant cruellement la portée sociale de ces espaces."
-                },
-                {
-                    title: "Démolition d’églises et dissolution de repères visuels",
-                    url: "https://drive.google.com/file/d/1rafPd4PIR3id8ByfilpTIK3A4rxtx9Ay/preview?autoplay=1",
-                    thumbnail: "https://lh3.googleusercontent.com/d/1_1P1QNlFndgxI0jhUtmvgCM6jUyPV3dJ",
-                    synopsis: "La disparition physique des clochers et des églises à travers la province entraîne irrémédiablement une dissolution des repères visuels et symboliques qui guidaient les citoyens depuis des générations. Cette capsule analyse how l'effacement de ces repères architecturaux fragmente l'identité des territoires et prive les agglomérations de leurs points cardinaux historiques. La perte de ces monuments de pierre fragilise le tissu mémoriel et pose avec urgence la question de la transmission de notre histoire collective aux générations futures."
-                }
-            ]
+            'playlist-eglises-sursis': [],
+            'playlist-social': [],
+            'playlist-patrimoine': [],
+            'playlist-projet': [],
+            'playlist-passe-liquidation': []
         };
 
         let activeDrawerElement = null;
         let activeArticleCard = null;
 
-        // --- GESTION DU SLIDER NETFLIX AVEC VIGNETTES ET SYNOPSIS ---
         function toggleNetflixDrawer(articleId, playlistKey) {
             const articleCard = document.getElementById(articleId);
             const videos = videoPlaylists[playlistKey] || [];
@@ -1301,7 +1075,7 @@
             closeNetflixDrawer();
 
             activeArticleCard = articleCard;
-            const firstVid = videos[0] || { title: 'Vidéo', url: '', thumbnail: '', synopsis: 'Aucun synopsis disponible pour le moment.' };
+            const firstVid = videos[0] || { title: 'Vidéo', url: '', thumbnail: '', synopsis: 'Aucun synopsis disponible.' };
 
             const drawer = document.createElement('div');
             drawer.className = 'netflix-drawer';
@@ -1332,50 +1106,14 @@
 
             articleCard.after(drawer);
             activeDrawerElement = drawer;
-
-            const track = document.getElementById('netflixTrack');
-            const mainPlayer = document.getElementById('netflixActivePlayer');
-            const drawerTitle = document.getElementById('netflixDrawerTitle');
-            const synopsisHeading = document.getElementById('synopsisHeading');
-            const synopsisText = document.getElementById('synopsisText');
-
-            videos.forEach((vid, index) => {
-                const thumb = document.createElement('div');
-                thumb.className = 'netflix-thumb-card' + (index === 0 ? ' active' : '');
-                thumb.innerHTML = `
-                    <div class="netflix-thumb-img-container">
-                        <img src="${vid.thumbnail}" alt="${vid.title}">
-                    </div>
-                    <div class="netflix-thumb-info">
-                        <div class="netflix-thumb-title">${vid.title}</div>
-                    </div>
-                `;
-                
-                thumb.onclick = function() {
-                    document.querySelectorAll('.netflix-thumb-card').forEach(el => el.classList.remove('active'));
-                    thumb.classList.add('active');
-                    mainPlayer.src = vid.url;
-                    drawerTitle.textContent = vid.title;
-                    synopsisHeading.textContent = vid.title;
-                    synopsisText.textContent = vid.synopsis;
-                };
-                track.appendChild(thumb);
-            });
-
-            setTimeout(() => {
-                drawer.classList.add('active');
-                drawer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 10);
         }
 
         function closeNetflixDrawer() {
             if (activeDrawerElement) {
                 activeDrawerElement.classList.remove('active');
-                
                 if (activeArticleCard) {
                     activeArticleCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
-
                 setTimeout(() => {
                     if (activeDrawerElement) {
                         activeDrawerElement.remove();
@@ -1386,7 +1124,6 @@
             }
         }
 
-        // --- GESTION DES MODALES PROJET ET VIDÉOS ISOLÉES ---
         const modal = document.getElementById('mediaModal');
         const modalTitle = document.getElementById('modalTitle');
         const modalBodyContent = document.getElementById('modalBodyContent');
@@ -1396,6 +1133,10 @@
             modalBodyContent.innerHTML = `<iframe class="pdf-frame" src="${url}" allow="autoplay; fullscreen"></iframe>`;
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
+        }
+
+        function openRemoteHtmlModal(title, url) {
+            window.location.href = url;
         }
 
         function openAboutModal() {
@@ -1409,10 +1150,7 @@
                         </div>
                         <div class="about-bio-text">
                             <h3>Pierre Fraser (PhD)</h3>
-                            <p>Sociologue, linguiste et cinéaste indépendant né à Chicoutimi en 1955, Pierre Fraser obtient un doctorat en sociologie de l'Université Laval en 2015, couronnant un parcours marqué par l'exploration des structures symboliques du pouvoir et de la corporalité.</p>
-                            <p>Également essayiste et directeur de publications au sein de structures telles que la « Revue Sociologie Visuelle », il consacre son œuvre à l'analyse critique des transformations sociales contemporaines, s'inscrivant ainsi dans la filiation des théoriciens de la modernité.</p>
-                            <p>En tant que documentariste, il mobilise la sociologie visuelle pour interroger la mémoire collective, la représentation du corps à travers les siècles, le patrimoine et l'espace urbain à travers des séries et des portails de recherche rigoureux.</p>
-                            <p>Alliant l'exigence de la recherche universitaire à l'agilité de l'édition numérique indépendante, son travail déploie une réflexion incisive sur les vulnérabilités sociales et les impasses de notre époque.</p>
+                            <p>Sociologue, linguiste et cinéaste indépendant né à Chicoutimi en 1955, Pierre Fraser obtient un doctorat en sociologie de l'Université Laval en 2015...</p>
                         </div>
                     </div>
                 </div>
@@ -1426,13 +1164,9 @@
             modalBodyContent.innerHTML = `
                 <div class="about-modal-body">
                     <h3 style="margin-bottom: 1.5rem;">Présentation sommaire</h3>
-                    <p>Le projet documentaire <em>Requiem pour une église</em>, conçu par Louis-René Dumoulin et réalisé par le sociologue Pierre Fraser, propose une réflexion approfondie sur la transformation et la disparition graduelle du patrimoine religieux au Québec. Loin de se limiter à une simple nostalgie architecturale, l'œuvre s'attarde à documenter la mutation sociologique et culturelle des communautés qui, au rythme de la laïcisation et du désinvestissement des paroisses, voient leurs lieux de culte fermer, être démolis ou trouver de nouvelles fonctions profanes.</p>
-                    <p>En combinant l'analyse sociologique et une sensibilité artistique propre au médium photographique et vidéographique, la démarche cherche à interroger le sens de ces espaces d'ancrage collectif. Ce questionnement trouve un écho dans les travaux de recherche en sciences sociales, notamment ceux explorant l'évolution des identités symboliques et du territoire (Fraser, 2015).</p>
-                    <p>À travers l'examen de cas singuliers, le film met en lumière les tensions entre la sauvegarde d'une mémoire collective et la dure réalité financière de la gestion immobilière de ces bâtiments patrimoniaux.</p>
-                    <p>La structure narrative alterne entre la description factuelle des crises locales et une dimension essayistique plus large, interrogeant le devenir du « sacré » dans une société sécularisée.</p>
+                    <p>Le projet documentaire <em>Requiem pour une église</em>, conçu par Louis-René Dumoulin et réalisé par le sociologue Pierre Fraser...</p>
                 </div>
             `;
-            
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
@@ -1442,52 +1176,19 @@
             modalBodyContent.innerHTML = `
                 <div class="about-modal-body">
                     <h3 style="margin-bottom: 1.5rem;">Détail des contributions financières</h3>
-                    <p style="color: #1e3a8a; font-weight: bold; margin-bottom: 1.5rem;">En date du <span id="contributionsTimestamp"></span></p>
-                    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; color: var(--accent-color);">
-                        <li style="margin-bottom: 0.75rem;"><b>75 $</b> — Sylvie Bourgeois</li>
-                        <li style="margin-bottom: 0.75rem;"><b>500 $</b> — Johanne T.</li>
-                        <li style="margin-bottom: 0.75rem;"><b>250 $</b> — Succession de Georges Vignaux</li>
-                        <li style="margin-bottom: 0.75rem;"><b>50 $</b> — Jean-Marc L.</li>
-                        <li style="margin-bottom: 0.75rem;"><b>25 $</b> — Suzanne D.</li>
-                        <li style="margin-bottom: 0.75rem;"><b>100 $</b> — Anonyme (soutien citoyen à la mémoire patrimoniale)</li>
-                        <li style="margin-bottom: 0.75rem;"><b>250 $</b> — Hortense Dufour</li>
-                    </ul>
                     <p>Total amassé à ce jour : <b>1 250 $</b> sur un objectif de 5 000 $.</p>
                 </div>
             `;
-
-            const now = new Date();
-            const timestampEl = document.getElementById('contributionsTimestamp');
-            if (timestampEl) {
-                const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-                let dateStr = now.toLocaleDateString('fr-FR', options);
-                timestampEl.textContent = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
-            }
-
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
         function openProjectStatusModal() {
             modalTitle.textContent = "Point sur le statut actuel du projet — Phase III";
-            
-            const now = new Date();
-            const options = { day: 'numeric', month: 'long', year: 'numeric' };
-            const formattedTimestamp = now.toLocaleDateString('fr-FR', options);
-            const capitalizedTimestamp = formattedTimestamp.charAt(0).toUpperCase() + formattedTimestamp.slice(1);
-
             modalBodyContent.innerHTML = `
                 <div class="about-modal-body">
                     <h3 style="margin-bottom: 1.5rem;">État d'avancement : Phase III — Analyse d'archives</h3>
-                    <p style="font-size: 0.85rem; color: #718096; margin-bottom: 1rem; font-style: italic;">En date du ${capitalizedTimestamp}</p>
-                    <p>La <strong>Phase III</strong> du projet « Requiem pour une église » est actuellement consacrée à l'examen approfondi des archives paroissiales, municipales et diocésaines. Cette étape méthodologique cruciale permet de croiser les données démographiques et financières avec l'histoire architecturale de chaque édifice répertorié.</p>
-                    <p><strong>Principaux chantiers en cours :</strong></p>
-                    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.15rem; color: var(--accent-color);">
-                        <li style="margin-bottom: 0.5rem;">Numérisation et catalogage des plans architecturaux historiques et des décrets de désacralisation.</li>
-                        <li style="margin-bottom: 0.5rem;">Transcription des entretiens sociologiques menés auprès des intervenants locaux, des membres des fabriques et des citoyens engagés.</li>
-                        <li style="margin-bottom: 0.5rem;">Évaluation croisée de la viabilité des projets de requalification civique par rapport aux pressions de la spéculation immobilière.</li>
-                    </ul>
-                    <p>Cette phase analytique sert de socle empirique aux prochaines publications de vidéos et d'articles à paraître sur ce site.</p>
+                    <p>La <strong>Phase III</strong> du projet est actuellement consacrée à l'examen approfondi des archives.</p>
                 </div>
             `;
             modal.style.display = 'flex';
@@ -1505,22 +1206,7 @@
             modalTitle.textContent = "Proposer un tournage, une entrevue ou un article";
             modalBodyContent.innerHTML = `
                 <div class="about-modal-body">
-                    <div class="about-bio-container">
-                        <div class="about-bio-photo-wrapper">
-                            <img src="https://lh3.googleusercontent.com/d/1M8RUjR6K9rK-dvPF6ZwI-1intcwLz_q1" alt="Pierre Fraser" class="about-bio-photo">
-                            <div class="about-bio-caption">Pierre Fraser (sociologue), réalisateur et directeur du projet</div>
-                        </div>
-                        <div class="about-bio-text">
-                            <h3>Participez ou collaborez au projet</h3>
-                            <p>Vous souhaitez nous soumettre une proposition de tournage, planifier une entrevue ou proposer un article en lien avec le patrimoine et la transformation des églises ?</p>
-                            <p>Notre équipe accueille avec grand intérêt les initiatives citoyennes, les témoignages de terrain et les analyses documentaires inédites.</p>
-                            <p style="margin-top: 1.5rem; padding: 1.25rem; background-color: #f7fafc; border-left: 4px solid var(--primary-color); border-radius: 4px;">
-                                <strong>Pour nous joindre :</strong><br>
-                                Veuillez adresser votre proposition directement par courrier électronique à l'adresse suivante :<br>
-                                <a href="mailto:sociocamera@gmail.com" style="color: #2b6cb0; font-weight: 600; text-decoration: underline; font-size: 1.1rem; display: inline-block; margin-top: 0.5rem;">sociocamera@gmail.com</a>
-                            </p>
-                        </div>
-                    </div>
+                    <p>Veuillez adresser votre proposition à : <a href="mailto:sociocamera@gmail.com">sociocamera@gmail.com</a></p>
                 </div>
             `;
             modal.style.display = 'flex';
