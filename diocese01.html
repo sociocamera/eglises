@@ -178,80 +178,21 @@
                 </button>
             </div>
 
-            <!-- LECTEUR AUDIO NATIF INTÉGRÉ DANS LA COLONNE DE GAUCHE -->
+            <!-- LECTEUR AUDIO NATIF AVEC ID POUR LE SYNCHRONISER -->
             <div class="bg-white border border-stone-300 rounded-md p-3 shadow-2xs space-y-2">
                 <div class="flex items-center space-x-2 text-amber-800">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"></path>
                     </svg>
-                    <span class="text-xs font-semibold uppercase tracking-wider">Exposé audio</span>
+                    <span class="text-xs font-semibold uppercase tracking-wider">Exposé audio synchronisé</span>
                 </div>
                 <div>
-                    <audio controls class="w-full h-9 accent-amber-700">
+                    <audio id="audioPlayer" controls class="w-full h-9 accent-amber-700">
                         <source src="https://raw.githubusercontent.com/sociocamera/eglises/audio/L_empreinte_du_dioc%C3%A8se_romain_au_Qu%C3%A9bec.m4a" type="audio/mp4">
                         Votre navigateur ne supporte pas l'élément audio.
                     </audio>
                 </div>
             </div>
-
-            <div class="pt-2 pb-1 text-[11px] font-bold text-stone-500 uppercase tracking-wider text-center">Planches visuelles</div>
-
-            <!-- Slides affichées uniquement en miniatures sans texte -->
-            <button onclick="showSlide('https://lh3.googleusercontent.com/d/10jjwuUrM15mMcu9tuEWnXPIeU_SB6Jnf', 'Slide 1')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
-                <img src="https://lh3.googleusercontent.com/d/10jjwuUrM15mMcu9tuEWnXPIeU_SB6Jnf" alt="Slide 1" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
-            </button>
-
-            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1awXSkJPEe6bsbrQgP53rKcXhkswdERxe', 'Slide 2')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
-                <img src="https://lh3.googleusercontent.com/d/1awXSkJPEe6bsbrQgP53rKcXhkswdERxe" alt="Slide 2" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
-            </button>
-
-            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1yafec-gLA0i60aV4Gu496mrR7ciK18ke', 'Slide 3')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
-                <img src="https://lh3.googleusercontent.com/d/1yafec-gLA0i60aV4Gu496mrR7ciK18ke" alt="Slide 3" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
-            </button>
-
-            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1Nub3ZLaz94lJ6PWMQGH6HepG8hbWotJk', 'Slide 4')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
-                <img src="https://lh3.googleusercontent.com/d/1Nub3ZLaz94lJ6PWMQGH6HepG8hbWotJk" alt="Slide 4" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
-            </button>
-
-            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1DwKfZi49aqlYAsp9iEJMpJXLGBI8wcJC', 'Slide 5')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
-                <img src="https://lh3.googleusercontent.com/d/1DwKfZi49aqlYAsp9iEJMpJXLGBI8wcJC" alt="Slide 5" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
-            </button>
-
-            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1LzYwxd_13zHG9SJ-fFH3mTiEpjQRmsYK', 'Slide 6')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
-                <img src="https://lh3.googleusercontent.com/d/1LzYwxd_13zHG9SJ-fFH3mTiEpjQRmsYK" alt="Slide 6" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
-            </button>
-
-            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1L-stq2340k8FTSe3fyjs2DjKXt0EXVF0', 'Slide 7')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
-                <img src="https://lh3.googleusercontent.com/d/1L-stq2340k8FTSe3fyjs2DjKXt0EXVF0" alt="Slide 7" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
-            </button>
-
-            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1RF4Yp7xp42Rkg1EA9gsCM_QXJCqLgm_4', 'Slide 8')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
-                <img src="https://lh3.googleusercontent.com/d/1RF4Yp7xp42Rkg1EA9gsCM_QXJCqLgm_4" alt="Slide 8" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
-            </button>
-
-            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1TTuEp6B3RyY34AmK4WaCXqy13dPhO0PW', 'Slide 9')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
-                <img src="https://lh3.googleusercontent.com/d/1TTuEp6B3RyY34AmK4WaCXqy13dPhO0PW" alt="Slide 9" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
-            </button>
-
-            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1uG9XQhdH-ijhz7GOd9_YCCkjgj2DcX3K', 'Slide 10')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
-                <img src="https://lh3.googleusercontent.com/d/1uG9XQhdH-ijhz7GOd9_YCCkjgj2DcX3K" alt="Slide 10" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
-            </button>
-
-            <button onclick="showSlide('https://lh3.googleusercontent.com/d/11psz32Ww7we1STmhJ3icwXzHN7GC5Fs1', 'Slide 11')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
-                <img src="https://lh3.googleusercontent.com/d/11psz32Ww7we1STmhJ3icwXzHN7GC5Fs1" alt="Slide 11" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
-            </button>
-
-            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1MA9veqPqyCVhat9l9KLtTjY1txvH5u2I', 'Slide 12')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
-                <img src="https://lh3.googleusercontent.com/d/1MA9veqPqyCVhat9l9KLtTjY1txvH5u2I" alt="Slide 12" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
-            </button>
-
-            <button onclick="showSlide('https://lh3.googleusercontent.com/d/1S6oaUebCzFMhVFEC8tCIeIKmcRsN08u7', 'Slide 13')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
-                <img src="https://lh3.googleusercontent.com/d/1S6oaUebCzFMhVFEC8tCIeIKmcRsN08u7" alt="Slide 13" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
-            </button>
-
-            <button onclick="showSlide('https://lh3.googleusercontent.com/d/19Wjrgl90HPD5MWo8szqwPCnCsbcqS9j0', 'Slide 14')" class="slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group">
-                <img src="https://lh3.googleusercontent.com/d/19Wjrgl90HPD5MWo8szqwPCnCsbcqS9j0" alt="Slide 14" class="w-full h-36 object-contain rounded bg-stone-50 group-hover:scale-[1.01] transition-transform">
-            </button>
         </nav>
     </aside>
 
@@ -259,10 +200,11 @@
     <main class="flex-1 flex flex-col h-full bg-[#fcfbf9] overflow-hidden">
         
         <!-- BARRE DE NAVIGATION SUPÉRIEURE -->
-        <nav class="bg-[#f4f2eb] border-b border-stone-300 p-3 px-6 flex items-center justify-between">
+        <nav class="bg-[#f4f2eb] border-b border-stone-300 p-3 px-6 flex items-center justify-between shrink-0">
             <a href="https://sociocamera.github.io/eglises/index.html#article-passe-liquidation" class="text-xs font-semibold text-amber-800 hover:underline flex items-center gap-1">
                 ← Retour à l'accueil
             </a>
+            <span class="text-xs text-stone-500 italic">Lecture audio synchronisée avec les diapositives</span>
         </nav>
 
         <!-- CONTAINER DYNAMIQUE (Texte intégral, Source, Vidéos ou Slide active) -->
@@ -471,16 +413,16 @@
                         <div class="netflix-synopsis-pane">
                             <div class="netflix-synopsis-tag">Synopsis de la capsule</div>
                             <div class="netflix-synopsis-heading">L'empreinte du diocèse romain au Québec</div>
-                            <div class="netflix-synopsis-text">En retraçant le passage du modèle administratif romain aux structures ecclésiastiques de la Nouvelle-France, la captation illustre comment les frontières ecclésiales ont structuré en profondeur le développement économique et social du Québec moderne.</div>
+                            <div class="netflix-synopsis-text">En retraçant le passage du modèle administratif romain aux structures ecclésiastiques de la Nouvelle-France, la captation illustre comment les frontières ecclésiales han structuré en profondeur le développement économique et social du Québec moderne.</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- CONTENU MASQUÉ : Affichage dynamique des slides -->
+                <!-- CONTENU MASQUÉ : Affichage dynamique des slides (piloté par l'audio) -->
                 <div id="view-slide" class="hidden flex flex-col items-center space-y-4">
                     <div class="w-full flex justify-between items-center border-b border-stone-200 pb-3">
                         <h3 id="slide-title" class="text-lg font-bold text-stone-900">Diapositive</h3>
-                        <span class="text-xs bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-1 rounded font-medium">Diaporama</span>
+                        <span class="text-xs bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-1 rounded font-medium">Synchronisation audio active</span>
                     </div>
                     <div class="w-full bg-[#f9f8f6] rounded border border-stone-300 flex justify-center p-3">
                         <img id="slide-img" src="" alt="Diapositive" class="max-h-[65vh] object-contain rounded shadow-xs">
@@ -491,7 +433,7 @@
         </div>
     </main>
 
-    <!-- SCRIPT DE NAVIGATION INTERACTIVE -->
+    <!-- SCRIPT DE NAVIGATION INTERACTIVE ET SYNCHRONISATION AUDIO -->
     <script>
         const btnText = document.getElementById('btn-text');
         const btnSource = document.getElementById('btn-source');
@@ -503,19 +445,54 @@
         const viewSlide = document.getElementById('view-slide');
         const slideImg = document.getElementById('slide-img');
         const slideTitle = document.getElementById('slide-title');
-        const slideBtns = document.querySelectorAll('.slide-btn');
+        const audioPlayer = document.getElementById('audioPlayer');
+
+        // TABLEAU DE SYNCHRONISATION (Repères temporels en secondes)
+        const slideCues = [
+            { start: 0,   end: 30,  url: 'https://lh3.googleusercontent.com/d/10jjwuUrM15mMcu9tuEWnXPIeU_SB6Jnf', title: 'Slide 1 : Introduction' },
+            { start: 30,  end: 60,  url: 'https://lh3.googleusercontent.com/d/1awXSkJPEe6bsbrQgP53rKcXhkswdERxe', title: 'Slide 2' },
+            { start: 60,  end: 90,  url: 'https://lh3.googleusercontent.com/d/1yafec-gLA0i60aV4Gu496mrR7ciK18ke', title: 'Slide 3' },
+            { start: 90,  end: 120, url: 'https://lh3.googleusercontent.com/d/1Nub3ZLaz94lJ6PWMQGH6HepG8hbWotJk', title: 'Slide 4' },
+            { start: 120, end: 150, url: 'https://lh3.googleusercontent.com/d/1DwKfZi49aqlYAsp9iEJMpJXLGBI8wcJC', title: 'Slide 5' },
+            { start: 150, end: 180, url: 'https://lh3.googleusercontent.com/d/1LzYwxd_13zHG9SJ-fFH3mTiEpjQRmsYK', title: 'Slide 6' },
+            { start: 180, end: 210, url: 'https://lh3.googleusercontent.com/d/1L-stq2340k8FTSe3fyjs2DjKXt0EXVF0', title: 'Slide 7' },
+            { start: 210, end: 240, url: 'https://lh3.googleusercontent.com/d/1RF4Yp7xp42Rkg1EA9gsCM_QXJCqLgm_4', title: 'Slide 8' },
+            { start: 240, end: 270, url: 'https://lh3.googleusercontent.com/d/1TTuEp6B3RyY34AmK4WaCXqy13dPhO0PW', title: 'Slide 9' },
+            { start: 270, end: 300, url: 'https://lh3.googleusercontent.com/d/1uG9XQhdH-ijhz7GOd9_YCCkjgj2DcX3K', title: 'Slide 10' },
+            { start: 300, end: 330, url: 'https://lh3.googleusercontent.com/d/11psz32Ww7we1STmhJ3icwXzHN7GC5Fs1', title: 'Slide 11' },
+            { start: 330, end: 360, url: 'https://lh3.googleusercontent.com/d/1MA9veqPqyCVhat9l9KLtTjY1txvH5u2I', title: 'Slide 12' },
+            { start: 360, end: 390, url: 'https://lh3.googleusercontent.com/d/1S6oaUebCzFMhVFEC8tCIeIKmcRsN08u7', title: 'Slide 13' },
+            { start: 390, end: 9999, url: 'https://lh3.googleusercontent.com/d/19Wjrgl90HPD5MWo8szqwPCnCsbcqS9j0', title: 'Slide 14 : Conclusion' }
+        ];
+
+        let currentActiveIndex = -1;
+
+        // Fonction pour couper la vidéo en cours de lecture et remettre la miniature d'origine
+        function stopVideoPlayer() {
+            const wrapper = document.getElementById('playerWrapper');
+            if (wrapper) {
+                wrapper.innerHTML = `
+                    <div class="video-poster-overlay" onclick="launchVideo()">
+                        <div class="play-button-ring">
+                            <svg class="w-8 h-8 text-white translate-x-0.5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                        <span class="text-white text-sm font-medium mt-4 tracking-wide z-11">Lancer la lecture de la capsule</span>
+                    </div>
+                `;
+            }
+        }
 
         function resetActiveStyles() {
             btnText.className = "w-full text-left p-3 rounded-md text-sm font-medium text-stone-700 bg-white border border-stone-300 hover:border-amber-600 transition-colors flex items-center justify-center shadow-2xs space-x-2";
             btnSource.className = "w-full text-left p-2.5 rounded-md text-xs font-medium bg-white border border-stone-300 text-stone-700 hover:border-amber-600 transition-colors flex items-center justify-center shadow-2xs space-x-1.5";
             btnVideos.className = "w-full text-left p-2.5 rounded-md text-xs font-medium bg-white border border-stone-300 text-stone-700 hover:border-amber-600 transition-colors flex items-center justify-center shadow-2xs space-x-1.5";
-            
-            slideBtns.forEach(btn => {
-                btn.className = "slide-btn w-full p-2 rounded-md bg-white border border-stone-300 hover:border-amber-600 transition-all flex justify-center shadow-2xs group";
-            });
         }
 
         function showTextContent() {
+            audioPlayer.pause();
+            stopVideoPlayer();
             resetActiveStyles();
             btnText.className = "w-full text-left p-3 rounded-md text-sm font-medium bg-amber-700 text-white transition-colors flex items-center justify-center shadow-sm space-x-2";
             
@@ -526,6 +503,8 @@
         }
 
         function showSourceContent() {
+            audioPlayer.pause();
+            stopVideoPlayer();
             resetActiveStyles();
             btnSource.className = "w-full text-left p-2.5 rounded-md text-xs font-medium bg-amber-700 text-white transition-colors flex items-center justify-center shadow-sm space-x-1.5";
             
@@ -536,6 +515,7 @@
         }
 
         function showVideosContent() {
+            audioPlayer.pause();
             resetActiveStyles();
             btnVideos.className = "w-full text-left p-2.5 rounded-md text-xs font-medium bg-amber-700 text-white transition-colors flex items-center justify-center shadow-sm space-x-1.5";
             
@@ -545,10 +525,9 @@
             viewSlide.classList.add('hidden');
         }
 
+        // Afficher automatiquement la slide active au centre selon l'audio (et couper la vidéo si elle jouait)
         function showSlide(imageUrl, title) {
-            resetActiveStyles();
-            event.currentTarget.className = "slide-btn w-full p-2 rounded-md bg-[#f4f0e6] border-2 border-amber-700 transition-all flex justify-center shadow-sm";
-
+            stopVideoPlayer();
             slideImg.src = imageUrl;
             slideTitle.textContent = title;
 
@@ -557,6 +536,20 @@
             viewVideos.classList.add('hidden');
             viewSlide.classList.remove('hidden');
         }
+
+        // Écouteur de synchronisation audio en temps réel
+        audioPlayer.addEventListener('timeupdate', () => {
+            const currentTime = audioPlayer.currentTime;
+            
+            // Trouver la slide active selon le minutage audio
+            const index = slideCues.findIndex(cue => currentTime >= cue.start && currentTime < cue.end);
+            
+            if (index !== -1 && index !== currentActiveIndex) {
+                currentActiveIndex = index;
+                const cue = slideCues[index];
+                showSlide(cue.url, cue.title);
+            }
+        });
 
         // Fonction qui injecte et lance dynamiquement le lecteur Google Drive au clic utilisateur
         function launchVideo() {
