@@ -200,6 +200,22 @@
             font-family: 'Inter', sans-serif;
         }
 
+        /* --- STYLES DU SLIDER DE SOUS-ARTICLES --- */
+        .flex-0-0 {
+            flex: 0 0 260px;
+        }
+        .sub-article-card {
+            background-color: #ffffff;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .sub-article-card:hover {
+            transform: translateY(-2px);
+        }
+        .sub-article-card.active {
+            border-color: #b45309;
+            box-shadow: 0 2px 8px rgba(180, 83, 9, 0.15);
+        }
+
         @media (max-width: 1100px) {
             .netflix-content-split { grid-template-columns: 1fr; height: auto; }
             .netflix-main-player { height: 350px; }
@@ -286,7 +302,7 @@
                 <svg class="w-4 h-4 shrink-0 text-amber-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                 </svg>
-                <span>L'empreinte du diocèse romain</span>
+                <span>L'Église, le diocèse et le territoire</span>
             </button>
 
 
@@ -304,7 +320,7 @@
                 </svg>
                 <span>Accueil</span>
             </div>
-            <span class="text-xs text-stone-500 italic">Lecture audio synchronisée avec les diapositives</span>
+            <span class="text-xs text-stone-500 italic">Un projet piloté par la Revue Sociologie Visuelle</span>
         </nav>
 
         <!-- CONTAINER DYNAMIQUE (Cadre global élargi) -->
@@ -315,7 +331,7 @@
                 <div id="view-text" class="bg-white border border-stone-300 rounded-lg overflow-hidden shadow-sm">
                     <div class="grid grid-cols-1 md:grid-cols-12">
                         
-                        <!-- Colonne de gauche élargie (7 parts, fond blanc)[cite: 1] -->
+                        <!-- Colonne de gauche élargie (7 parts, fond blanc) -->
                         <div class="header-left md:col-span-7 p-8 md:p-12 flex flex-col justify-between space-y-6">
                             <div>
                                 <span class="header-badge text-xs uppercase tracking-widest text-amber-800 font-bold block mb-2">Série documentaire sur la disparition du patrimoine religieux bâti du Québec</span>
@@ -323,7 +339,7 @@
                                 <p class="header-subtitle text-sm text-stone-500 mt-2 italic">Mutation, désacralisation et mémoire des lieux de culte en milieu contemporain.</p>
                                 
                                 <p class="header-description text-content text-stone-700 text-base leading-relaxed mt-4">
-                                    <span class="text-base font-medium">Ce projet qui est produit par Photo|Société et dirigé par le sociologue</span> <a href="#" onclick="openAboutModal(); return false;" style="color: inherit; text-decoration: underline; text-underline-offset: 3px; font-weight: 500;">Pierre Fraser</a> (PhD)[cite: 1] propose une analyse critique de la transformation accélérée des édifices religieux. À travers une approche croisant la vidéo, la recherche, l'histoire de l'art, la sociologie urbaine et l'architecture prospective, "Requiem pour une église" interroge le vide laissé par l'abandon de la foi catholique et les nouvelles formes d'appropriation mémorielle.
+                                    <span class="text-base font-medium">Ce projet qui est produit par Photo|Société et dirigé par le sociologue</span> <a href="#" onclick="openAboutModal(); return false;" style="color: inherit; text-decoration: underline; text-underline-offset: 3px; font-weight: 500;">Pierre Fraser</a> (PhD) propose une analyse critique de la transformation accélérée des édifices religieux. À travers une approche croisant la vidéo, la recherche, l'histoire de l'art, la sociologie urbaine et l'architecture prospective, "Requiem pour une église" interroge le vide laissé par l'abandon de la foi catholique et les nouvelles formes d'appropriation mémorielle.
                                 </p>
                                 
                                 <p class="header-description text-content text-stone-700 text-base leading-relaxed mt-4">
@@ -346,7 +362,7 @@
                             </div>
                         </div>
 
-                        <!-- Colonne de droite (5 parts, avec fond sombre exact, texte clair et liens en vert #34d399)[cite: 1] -->
+                        <!-- Colonne de droite (5 parts, avec fond sombre exact, texte clair et liens en vert #34d399) -->
                         <div class="header-right md:col-span-5 p-8 md:p-12 flex flex-col justify-between space-y-6 border-t md:border-t-0 md:border-l" style="background-color: #0b1329; border-color: #1a233e; color: #cbd5e1;">
                             <div>
                                 <div class="context-title flex items-center gap-2 text-xs font-bold tracking-wider uppercase mb-6" style="color: #cbd5e1;">
@@ -393,7 +409,7 @@
                     </div>
                 </div>
 
-                <!-- CONTENU MODULAIRE : Étude "L'empreinte du diocèse romain" (provenant de diocese01)[cite: 2] -->
+                <!-- CONTENU MODULAIRE : Étude "L'empreinte du diocèse romain" (provenant de diocese01) -->
                 <div id="view-diocese" class="hidden space-y-8 bg-white border border-stone-300 rounded-lg p-8 md:p-12 shadow-sm">
                     <!-- En-tête de l'étude avec le lecteur audio natif de diocese01.html à la place du bouton Retour -->
                     <div class="border-b border-stone-300 pb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -416,6 +432,56 @@
                                     <source src="https://raw.githubusercontent.com/sociocamera/eglises/audio/L_empreinte_du_dioc%C3%A8se_romain_au_Qu%C3%A9bec.m4a" type="audio/mp4">
                                     Votre navigateur ne supporte pas l'élément audio.
                                 </audio>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ZONE DU DIAPORAMA SYNCHRONISÉ (Positionnée au-dessus des sous-dossiers) -->
+                    <div id="synced-slide-container" class="my-6 bg-white border border-stone-300 rounded-lg p-4 shadow-2xs hidden flex flex-col items-center space-y-3">
+                        <div class="w-full flex justify-between items-center border-b border-stone-200 pb-2">
+                            <h4 id="audio-slide-title" class="text-xs font-bold uppercase tracking-wider text-amber-800">Diapositive synchronisée</h4>
+                            <span class="text-[10px] bg-amber-100 text-amber-900 border border-amber-300 px-2 py-0.5 rounded font-medium">Synchro active</span>
+                        </div>
+                        <div class="w-full bg-[#f9f8f6] rounded border border-stone-300 flex justify-center p-2">
+                            <img id="audio-slide-img" src="" alt="Diapositive de l'exposé audio" class="max-h-[380px] object-contain rounded shadow-xs">
+                        </div>
+                    </div>
+
+                    <!-- --- SLIDER DES SOUS-ARTICLES --- -->
+                    <div class="sub-articles-slider-container my-6 p-4 bg-[#f4f2eb] border border-stone-300 rounded-lg shadow-2xs">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-2 text-amber-800">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6"></path>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wider">Dans la même étude : Sous-articles du dossier</span>
+                            </div>
+                            <span class="text-[11px] text-stone-500 italic">Faites défiler pour explorer</span>
+                        </div>
+
+                        <div class="flex gap-4 overflow-x-auto pb-2">
+                            <div class="sub-article-card active flex-0-0 bg-white border-2 border-amber-700 rounded p-3.5 cursor-pointer transition-all hover:shadow-md">
+                                <span class="text-[10px] uppercase font-bold text-amber-800 tracking-wider block mb-1">Partie 1</span>
+                                <h4 class="text-xs font-bold text-stone-900 leading-snug mb-1">De la Rome antique à la Nouvelle-France</h4>
+                                <p class="text-[11px] text-stone-600 line-clamp-2">L'invention de la franchise bureaucratique du diocèsis et son exportation.</p>
+                            </div>
+
+                            <div class="sub-article-card flex-0-0 bg-white border border-stone-300 rounded p-3.5 cursor-pointer transition-all hover:border-amber-600 hover:shadow-md">
+                                <span class="text-[10px] uppercase font-bold text-stone-500 tracking-wider block mb-1">Partie 2</span>
+                                <h4 class="text-xs font-bold text-stone-900 leading-snug mb-1">Le boom du XIXe siècle et l'architecture invisible</h4>
+                                <p class="text-[11px] text-stone-600 line-clamp-2">Quand les caisses populaires se calquent sur le réseau diocésain.</p>
+                            </div>
+
+                            <div class="sub-article-card flex-0-0 bg-white border border-stone-300 rounded p-3.5 cursor-pointer transition-all hover:border-amber-600 hover:shadow-md">
+                                <span class="text-[10px] uppercase font-bold text-stone-500 tracking-wider block mb-1">Partie 3</span>
+                                <h4 class="text-xs font-bold text-stone-900 leading-snug mb-1">L'angle mort sociologique</h4>
+                                <p class="text-[11px] text-stone-600 line-clamp-2">Pourquoi cet héritage territorial a-t-il été ignoré par les chercheurs ?</p>
+                            </div>
+
+                            <div class="sub-article-card flex-0-0 bg-white border border-stone-300 rounded p-3.5 cursor-pointer transition-all hover:border-amber-600 hover:shadow-md">
+                                <span class="text-[10px] uppercase font-bold text-stone-500 tracking-wider block mb-1">Partie 4</span>
+                                <h4 class="text-xs font-bold text-stone-900 leading-snug mb-1">Perspectives et mutations contemporaines</h4>
+                                <p class="text-[11px] text-stone-600 line-clamp-2">Bilan critique de Fernand Harvey sur la permanence des structures.</p>
                             </div>
                         </div>
                     </div>
@@ -531,7 +597,7 @@
                         </div>
 
                         <p class="text-content text-stone-700 text-base leading-relaxed">
-                            Comme le souligne le sociologue Fernand Harvey[cite: 2], le diocèse ne représentait pas seulement une ligne entre deux clochers, mais bien le squelette même de l'aménagement du territoire québécois.
+                            Comme le souligne le sociologue Fernand Harvey, le diocèse ne représentait pas seulement une ligne entre deux clochers, mais bien le squelette même de l'aménagement du territoire québécois.
                         </p>
                     </section>
 
@@ -539,7 +605,7 @@
                     <section class="space-y-4">
                         <h3 class="text-xl font-bold text-stone-900 border-l-4 border-amber-700 pl-3">L'angle mort sociologique : Pourquoi cet héritage a-t-il été oublié ?</h3>
                         <p class="text-content text-stone-700 text-base leading-relaxed">
-                            Si la structure diocésienne a été le moteur de toutes nos grandes institutions, pourquoi les chercheurs l'ont-ils ignorée pendant si longtemps ? C'est le cœur de la démonstration de Fernand Harvey[cite: 2] : cet oubli découle d'un rendez-vous manqué entre l'histoire religieuse et l'histoire régionale.
+                            Si la structure diocésienne a été le moteur de toutes nos grandes institutions, pourquoi les chercheurs l'ont-ils ignorée pendant si longtemps ? C'est le cœur de la démonstration de Fernand Harvey : cet oubli découle d'un rendez-vous manqué entre l'histoire religieuse et l'histoire régionale.
                         </p>
                         <p class="text-content text-stone-700 text-base leading-relaxed">
                             Dans les années 1950 et 1960, la sociologie religieuse au Québec était fortement influencée par le sociologue français Gabriel Le Bras. L'objectif principal de ces recherches n'était pas de faire de l'histoire socio-économique, mais de faire de la pastorale : on étudiait la religion sur le terrain pour aider l'Église à se moderniser de l'intérieur, en pleine période de réformes liées au Concile Vatican II.
@@ -549,12 +615,12 @@
                             <p class="text-stone-800 italic font-serif text-sm">
                                 « Ignorer le rôle du diocèse pour comprendre l'économie du Québec revient à essayer de comprendre la dynamique économique d'une grande métropole en ignorant complètement l'existence de son réseau d'autoroutes. »
                             </p>
-                            <span class="block text-right text-xs font-bold text-amber-900 mt-2">— Fernand Harvey[cite: 2]</span>
+                            <span class="block text-right text-xs font-bold text-amber-900 mt-2">— Fernand Harvey</span>
                         </div>
                     </section>
                 </div>
 
-                <!-- CONTENU MASQUÉ : Source (Intégration Google Drive)[cite: 1] -->
+                <!-- CONTENU MASQUÉ : Source (Intégration Google Drive) -->
                 <div id="view-source" class="hidden space-y-4 bg-white border border-stone-300 rounded-lg p-8 md:p-12 shadow-sm">
                     <div class="border-b border-stone-200 pb-4">
                         <span class="text-xs uppercase tracking-widest text-amber-800 font-semibold">Référence documentaire</span>
@@ -565,7 +631,7 @@
                     </div>
                 </div>
 
-                <!-- CONTENU MASQUÉ : Vidéos (Intégration interactive style Netflix)[cite: 1] -->
+                <!-- CONTENU MASQUÉ : Vidéos (Intégration interactive style Netflix) -->
                 <div id="view-videos" class="hidden space-y-4 bg-white border border-stone-300 rounded-lg p-8 md:p-12 shadow-sm">
                     <div class="border-b border-stone-200 pb-4">
                         <span class="text-xs uppercase tracking-widest text-amber-800 font-semibold">Médiathèque</span>
@@ -594,7 +660,7 @@
                     <div class="netflix-slider-container">
                         <div class="netflix-slider-title">Séries de capsules documentaires</div>
                         <div class="netflix-thumbnails-track" id="netflixThumbnailsTrack">
-                            <!-- Généré dynamiquement par JS[cite: 1] -->
+                            <!-- Généré dynamiquement par JS -->
                         </div>
                     </div>
                 </div>
@@ -614,7 +680,7 @@
         </div>
     </main>
 
-    <!-- FENÊTRE MODALE : À PROPOS DE PIERRE FRASER[cite: 1] -->
+    <!-- FENÊTRE MODALE : À PROPOS DE PIERRE FRASER -->
     <div id="aboutModal" class="fixed inset-0 bg-stone-950/70 z-50 flex items-center justify-center p-4 hidden backdrop-blur-xs">
         <div class="bg-white border border-stone-300 rounded-lg max-w-3xl w-full overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-200 flex flex-col md:flex-row">
             <div class="md:w-5/12 bg-stone-900 p-6 flex flex-col items-center justify-center text-center relative">
@@ -634,8 +700,8 @@
                     </div>
                     
                     <div class="text-xs text-stone-600 leading-relaxed space-y-3 font-serif">
-                        <p>Sociologue, linguiste et cinéaste indépendant né à Chicoutimi en 1955[cite: 1], Pierre Fraser obtient un doctorat en sociologie de l'Université Laval en 2015[cite: 1], couronnant un parcours marqué par l'exploration des structures symboliques du pouvoir et de la corporalité.</p>
-                        <p>Également essayiste et directeur de publications au sein de structures telles que la « Revue Sociologie Visuelle », il consacre son œuvre à l'analyse critique des transformations sociales contemporaines, s'inscrivant ainsi dans la filiation des théoriciens de la modernité.</p>
+                        <p>Sociologue, linguiste et cinéaste indépendant né à Chicoutimi en 1955, Pierre Fraser obtient un doctorat en sociologie de l'Université Laval en 2015, couronnant un parcours marqué par l'exploration des structures symboliques du pouvoir et de la corporalité.</p>
+                        <p>Également essayiste et directeur de publications au sein de structures telles que la « Revue Sociologie Visuelle », il consacre son œuvre à l'analyse critique des transformations sociales contemporaines, s'inscrivant ainsi dans la filiation des théoriciens de la modernité. </p>
                         <p>En tant que documentariste, il mobilise la sociologie visuelle pour interroger la mémoire collective, la représentation du corps à travers les siècles, le patrimoine et l'espace urbain à travers des séries et des portails de recherche rigoureux.</p>
                         <p>Alliant l'exigence de la recherche universitaire à l'agilité de l'édition numérique indépendante, son travail déploie une réflexion incisive sur les vulnérabilités sociales et les impasses de notre époque.</p>
                     </div>
@@ -663,8 +729,8 @@
             
             <div class="p-6 md:p-8 space-y-4 max-h-[70vh] overflow-y-auto text-stone-700 text-sm leading-relaxed font-serif">
                 <h4 class="font-sans font-bold text-base text-stone-900 mb-2">Présentation sommaire</h4>
-                <p>Le projet documentaire <em>Requiem pour une église</em>, conçu par Louis-René Dumoulin et réalisé par le sociologue Pierre Fraser[cite: 1], propose une réflexion approfondie sur la transformation et la disparition graduelle du patrimoine religieux au Québec[cite: 1]. Loin de se limiter à une simple nostalgie architecturale, l'œuvre s'attarde à documenter la mutation sociologique et culturelle des communautés qui, au rythme de la laïcisation et du désinvestissement des paroisses, voient leurs lieux de culte fermer, être démolis ou trouver de nouvelles fonctions profanes.</p>
-                <p>En combinant l'analyse sociologique et une sensibilité artistique propre au médium photographique et vidéographique, la démarche cherche à interroger le sens de ces espaces d'ancrage collectif. Ce questionnement trouve un écho dans les travaux de recherche en sciences sociales, notamment ceux explorant l'évolution des identités symboliques et du territoire (Fraser, 2015)[cite: 1].</p>
+                <p>Le projet documentaire <em>Requiem pour une église</em>, conçu par Louis-René Dumoulin et réalisé par le sociologue Pierre Fraser, propose une réflexion approfondie sur la transformation et la disparition graduelle du patrimoine religieux au Québec. Loin de se limiter à une simple nostalgie architecturale, l'œuvre s'attarde à documenter la mutation sociologique et culturelle des communautés qui, au rythme de la laïcisation et du désinvestissement des paroisses, voient leurs lieux de culte fermer, être démolis ou trouver de nouvelles fonctions profanes.</p>
+                <p>En combinant l'analyse sociologique et une sensibilité artistique propre au médium photographique et vidéographique, la démarche cherche à interroger le sens de ces espaces d'ancrage collectif. Ce questionnement trouve un écho dans les travaux de recherche en sciences sociales, notamment ceux explorant l'évolution des identités symboliques et du territoire.</p>
                 <p>À travers l'examen de cas singuliers, le film met en lumière les tensions entre la sauvegarde d'une mémoire collective et la dure réalité financière de la gestion immobilière de ces bâtiments patrimoniaux.</p>
                 <p>La structure narrative alterne entre la description factuelle des crises locales et une dimension essayistique plus large, interrogeant le devenir du « sacré » dans une société sécularisée.</p>
             </div>
@@ -749,12 +815,12 @@
                     <span id="autoTimestampPhase3">En date du ...</span>
                 </div>
 
-                <p>La Phase III du projet « Requiem pour une église » est actuellement consacrée à l'examen approfondi des archives paroissiales, municipales et diocésaines. Cette étape méthodologique cruciale permet de croiser les données démographiques et financières avec l'histoire architecturale de chaque édifice répertorié[cite: 1].</p>
+                <p>La Phase III du projet « Requiem pour une église » est actuellement consacrée à l'examen approfondi des archives paroissiales, municipales et diocésaines. Cette étape méthodologique cruciale permet de croiser les données démographiques et financières avec l'histoire architecturale de chaque édifice répertorié.</p>
                 
                 <h4 class="font-sans font-bold text-base text-stone-900 pt-2 mb-2">Principaux chantiers en cours :</h4>
                 <ul class="list-disc pl-5 space-y-2 text-stone-700">
                     <li>Numérisation et catalogage des plans architecturaux historiques et des décrets de désacralisation.</li>
-                    <li>Transcription des entretiens sociologiques menés auprès des intervenants locaux, des membres des fabriques et des citoyens engagés[cite: 1].</li>
+                    <li>Transcription des entretiens sociologiques menés auprès des intervenants locaux, des membres des fabriques et des citoyens engagés.</li>
                     <li>Évaluation croisée de la viabilité des projets de requalification civique par rapport aux pressions de la spéculation immobilière.</li>
                 </ul>
 
@@ -788,11 +854,11 @@
 
                 <ul class="space-y-2 text-stone-700 font-serif">
                     <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-700"></span><strong>75 $</strong> — Sylvie Bourgeois</li>
-                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-700"></span><strong>500 $</strong> — Photo|Société[cite: 1]</li>
-                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-700"></span><strong>250 $</strong> — Revue Sociologie Visuelle[cite: 1]</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-700"></span><strong>500 $</strong> — Photo|Société</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-700"></span><strong>250 $</strong> — Revue Sociologie Visuelle</li>
                     <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-700"></span><strong>50 $</strong> — Jean-Marc L.</li>
                     <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-700"></span><strong>25 $</strong> — Suzanne D.</li>
-                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-700"></span><strong>100 $</strong> — Anonyme (soutien citoyen à la mémoire patrimoniale)</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-700"></span><strong>100 $</strong> — Martin Meunier</li>
                     <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-700"></span><strong>250 $</strong> — Hortense Dufour</li>
                 </ul>
 
@@ -827,6 +893,12 @@
 
         const audioPlayerDiocese = document.getElementById('audioPlayerDiocese');
 
+        // Références pour le diaporama synchronisé audio
+        const syncedSlideContainer = document.getElementById('synced-slide-container');
+        const audioSlideImg = document.getElementById('audio-slide-img');
+        const audioSlideTitle = document.getElementById('audio-slide-title');
+        let currentDioceseCueIndex = -1;
+
         const aboutModal = document.getElementById('aboutModal');
         const aboutProjectModal = document.getElementById('aboutProjectModal');
         const presentationModal = document.getElementById('presentationModal');
@@ -837,22 +909,30 @@
         const autoTimestampPhase3 = document.getElementById('autoTimestampPhase3');
         const autoTimestampContributions = document.getElementById('autoTimestampContributions');
 
+        // Cues mis à jour avec les images exactes du nouveau répertoire Google Drive
         const slideCues = [
-            { start: 0,   end: 30,  url: 'https://lh3.googleusercontent.com/d/10jjwuUrM15mMcu9tuEWnXPIeU_SB6Jnf' },
-            { start: 30,  end: 60,  url: 'https://lh3.googleusercontent.com/d/1awXSkJPEe6bsbrQgP53rKcXhkswdERxe' },
-            { start: 60,  end: 90,  url: 'https://lh3.googleusercontent.com/d/1yafec-gLA0i60aV4Gu496mrR7ciK18ke' },
-            { start: 90,  end: 120, url: 'https://lh3.googleusercontent.com/d/1Nub3ZLaz94lJ6PWMQGH6HepG8hbWotJk' },
-            { start: 120, end: 150, url: 'https://lh3.googleusercontent.com/d/1DwKfZi49aqlYAsp9iEJMpJXLGBI8wcJC' },
-            { start: 150, end: 180, url: 'https://lh3.googleusercontent.com/d/1LzYwxd_13zHG9SJ-fFH3mTiEpjQRmsYK' },
-            { start: 180, end: 210, url: 'https://lh3.googleusercontent.com/d/1L-stq2340k8FTSe3fyjs2DjKXt0EXVF0' },
-            { start: 210, end: 240, url: 'https://lh3.googleusercontent.com/d/1RF4Yp7xp42Rkg1EA9gsCM_QXJCqLgm_4' },
-            { start: 240, end: 270, url: 'https://lh3.googleusercontent.com/d/1TTuEp6B3RyY34AmK4WaCXqy13dPhO0PW' },
-            { start: 270, end: 300, url: 'https://lh3.googleusercontent.com/d/1uG9XQhdH-ijhz7GOd9_YCCkjgj2DcX3K' },
-            { start: 300, end: 330, url: 'https://lh3.googleusercontent.com/d/11psz32Ww7we1STmhJ3icwXzHN7GC5Fs1' },
-            { start: 330, end: 360, url: 'https://lh3.googleusercontent.com/d/1MA9veqPqyCVhat9l9KLtTjY1txvH5u2I' },
-            { start: 360, end: 390, url: 'https://lh3.googleusercontent.com/d/1S6oaUebCzFMhVFEC8tCIeIKmcRsN08u7' },
-            { start: 390, end: 9999, url: 'https://lh3.googleusercontent.com/d/19Wjrgl90HPD5MWo8szqwPCnCsbcqS9j0' }
-        ];
+{ start: 0,    end: 14,    url: 'https://lh3.googleusercontent.com/d/1GZ1Binsm9JU40u9-YYP3Z-1dNHzuPQKW', title: 'Diapositive 1' },
+{ start: 14,    end: 28,    url: 'https://lh3.googleusercontent.com/d/1gPp-A-RNk4w-Z2HhIgkuy4L24Me1mfb4', title: 'Diapositive 2' },
+{ start: 28,    end: 41,    url: 'https://lh3.googleusercontent.com/d/192abE5cXXJOhM5-hPJX8kiBr9krHhvZJ', title: 'Diapositive 3' },
+{ start: 41,    end: 55,    url: 'https://lh3.googleusercontent.com/d/1GDP4OZTkAqykNrd9GT69gdi3ovHp26bP', title: 'Diapositive 4' },
+{ start: 55,    end: 72,    url: 'https://lh3.googleusercontent.com/d/1RxpS0-ZRDMTT67daGgzeKHwWo1annQSq', title: 'Diapositive 5' },
+{ start: 72,    end: 87,    url: 'https://lh3.googleusercontent.com/d/13Kb-my0OhUvuEUjzEMnA5yD1DfyBRJPh', title: 'Diapositive 6' },
+{ start: 87,    end: 102,    url: 'https://lh3.googleusercontent.com/d/1zRPx61Uq8_RPif3a7TpIN9p8BrJen9Hc', title: 'Diapositive 7' },
+{ start: 102,    end: 116,    url: 'https://lh3.googleusercontent.com/d/1p6Yr3YGtpjXAQ2sE9YBMfzfShtJHDbTB', title: 'Diapositive 8' },
+{ start: 116,    end: 133,    url: 'https://lh3.googleusercontent.com/d/1v-mSsUzSo8TkmNoQHni7_xcyCa-W6Sa9', title: 'Diapositive 9' },
+{ start: 133,    end: 148,    url: 'https://lh3.googleusercontent.com/d/14EEcMnsu8l1URR5JsDh4jric5kqlnWrE', title: 'Diapositive 10' },
+{ start: 148,    end: 162,    url: 'https://lh3.googleusercontent.com/d/1SSVQAA9Mo5Q6JnlsofXI2s_UiLzCMaMw', title: 'Diapositive 11' },
+{ start: 162,    end: 177,    url: 'https://lh3.googleusercontent.com/d/1AwLwaftpk6jfAHYHQjxK2tlqg8h_LELn', title: 'Diapositive 12' },
+{ start: 177,    end: 193,    url: 'https://lh3.googleusercontent.com/d/1PipdPoET-KKEi0ZdPdmGl3N8TXfyuT0R', title: 'Diapositive 13' },
+{ start: 193,    end: 208,    url: 'https://lh3.googleusercontent.com/d/1fLP6UHEGNJq3kuxx5nGeQiW-02D0vol-', title: 'Diapositive 14' },
+{ start: 208,    end: 224,    url: 'https://lh3.googleusercontent.com/d/1c-340TYsNjLCRDNX8uqM4HcrwzmH1zJX', title: 'Diapositive 15' },
+{ start: 224,    end: 239,    url: 'https://lh3.googleusercontent.com/d/199L4Jaeg9BUapzjpL52eL9u60aMl6dCd', title: 'Diapositive 16' },
+{ start: 239,    end: 254,    url: 'https://lh3.googleusercontent.com/d/1xsTYvu00Qd7lyFZ0CprJRvH_q5pk6MN8', title: 'Diapositive 17' },
+{ start: 254,    end: 269,    url: 'https://lh3.googleusercontent.com/d/10DjaVWj77dIDYEqX6kf3w8qMT8OGdgZN', title: 'Diapositive 18' },
+{ start: 269,    end: 284,    url: 'https://lh3.googleusercontent.com/d/1IK1on8xIQIZON5yr26IyUoA1V-oxkptJ', title: 'Diapositive 19' },
+{ start: 284,    end: 299,    url: 'https://lh3.googleusercontent.com/d/1YKRKalmFn8v_o9KigISTKfOvNeLkg4WJ', title: 'Diapositive 20' },
+{ start: 299,    end: 320,    url: 'https://lh3.googleusercontent.com/d/1hv4-02QktNwsDQVdycI_NAwqzDbqysJ5', title: 'Diapositive 21' }
+];
 
         let currentActiveIndex = -1;
 
@@ -874,7 +954,7 @@
                     title: "Architecture à la Dom Bello",
                     url: "https://drive.google.com/file/d/1t55GURFxUlA6VG_bgimoKnkuqzPvFfBE/preview?autoplay=1",
                     thumbnail: "https://lh3.googleusercontent.com/d/13Rbo56arUKK7310qdS8k9mfyVblU-owx",
-                    synopsis: "L'empreinte artistique de Dom Bello à travers l'aménagement liturgique témoigne d'une volonté audacieuse de renouveler le langage plastique du sacré au Québec[cite: 1]. En épousant les formes modernistes tout en respectant l'ordonnance spirituelle des lieux, cette approche architecturale a cherché à concilier l'exigence esthétique et la ferveur communautaire. C'est l'histoire d'un dialogue subtil entre modernité artistique et tradition ecclésiale, dont les vestiges sculptés continuent de hanter les espaces transformés de notre patrimoine bâti contemporain."
+                    synopsis: "L'empreinte artistique de Dom Bello à travers l'aménagement liturgique témoigne d'une volonté audacieuse de renouveler le langage plastique du sacré au Québec. En épousant les formes modernistes tout en respectant l'ordonnance spirituelle des lieux, cette approche architecturale a cherché à concilier l'exigence esthétique et la ferveur communautaire. C'est l'histoire d'un dialogue subtil entre modernité artistique et tradition ecclésiale, dont les vestiges sculptés continuent de hanter les espaces transformés de notre patrimoine bâti contemporain."
                 },
                 {
                     title: "Grandes orgues du Québec",
@@ -888,7 +968,7 @@
                     title: "L'évolution du catholicisme au Québec de 1960 à 2001", 
                     url: "https://drive.google.com/file/d/194OPaamSnusiYfap2ayshA1MpIF-0tfD/preview?autoplay=1",
                     thumbnail: "https://lh3.googleusercontent.com/d/1hln9xKirdJGuTInVpU2KT07u2qe3ZwYN?auto=format&fit=crop&w=600&q=80",
-                    synopsis: "Amorcé par la Révolution tranquille, le déclin de l'emprise institutionnelle de l'Église catholique marque un basculement sociétal majeur. Le sociologue Martin Meunier[cite: 1] analyse la transition d'une adhésion culturelle massive vers un effritement des pratiques régulières. Loin de s'effondrer instantanément, le catholicisme se fragmente, perdant son rôle de ciment national unificateur pour devenir une empreinte mémorielle discrète. Cette évolution redéfinit en profondeur les liens entre le croire, l'appartenance collective et les institutions séculières."
+                    synopsis: "Amorcé par la Révolution tranquille, le déclin de l'emprise institutionnelle de l'Église catholique marque un basculement sociétal majeur. Le sociologue Martin Meunier analyse la transition d'une adhésion culturelle massive vers un effritement des pratiques régulières. Loin de s'effondrer instantanément, le catholicisme se fragmente, perdant son rôle de ciment national unificateur pour devenir une empreinte mémorielle discrète. Cette évolution redéfinit en profondeur les liens entre le croire, l'appartenance collective et les institutions séculières."
                 },
                 { 
                     title: "La monté du pluralisme religieux au Québec", 
@@ -1176,6 +1256,7 @@
             viewSlide.classList.remove('hidden');
         }
 
+        // Synchronisation du lecteur principal (si utilisé ailleurs)
         audioPlayer.addEventListener('timeupdate', () => {
             const currentTime = audioPlayer.currentTime;
             const index = slideCues.findIndex(cue => currentTime >= cue.start && currentTime < cue.end);
@@ -1186,6 +1267,34 @@
                 showSlide(cue.url, cue.title);
             }
         });
+
+        // Synchronisation audio dédiée pour "L'empreinte du diocèse romain"
+        if (audioPlayerDiocese) {
+            audioPlayerDiocese.addEventListener('timeupdate', () => {
+                const currentTime = audioPlayerDiocese.currentTime;
+                const index = slideCues.findIndex(cue => currentTime >= cue.start && currentTime < cue.end);
+                
+                if (index !== -1 && index !== currentDioceseCueIndex) {
+                    currentDioceseCueIndex = index;
+                    const cue = slideCues[index];
+                    
+                    audioSlideImg.src = cue.url;
+                    audioSlideTitle.textContent = `Diapositive — ${cue.title} (${Math.floor(cue.start)}s)`;
+                    syncedSlideContainer.classList.remove('hidden');
+                }
+            });
+
+            // Fermer/masquer la fenêtre des slides dès que l'audio est arrêté, mis en pause ou terminé
+            audioPlayerDiocese.addEventListener('pause', () => {
+                syncedSlideContainer.classList.add('hidden');
+                currentDioceseCueIndex = -1;
+            });
+
+            audioPlayerDiocese.addEventListener('ended', () => {
+                syncedSlideContainer.classList.add('hidden');
+                currentDioceseCueIndex = -1;
+            });
+        }
 
         // Gestion des modales
         function openAboutModal() { aboutModal.classList.remove('hidden'); }
@@ -1283,7 +1392,7 @@
                 } else if (onclickAttr.includes('showTextContent')) {
                     titreBouton = "Accueil";
                 } else if (onclickAttr.includes('showDioceseContent')) {
-                    titreBouton = "L'empreinte du diocèse romain";
+                    titreBouton = "L'Église, le diocèse et le territoire";
                 } else {
                     const span = button.querySelector('span');
                     if (span) {
